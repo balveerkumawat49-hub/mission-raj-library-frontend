@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#2563eb">
+  <meta name="description" content="Mission Raj Library — Master Colony, Kekri">
+
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Mission Raj">
+
+  <title>Mission Raj Library | Portal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <main class="auth-shell">
+
+    <section class="auth-card">
+
+      <!-- Brand -->
+      <div class="brand-mark">MR</div>
+
+      <div class="eyebrow">
+        MISSION RAJ LIBRARY
+      </div>
+
+      <h1>Welcome back.</h1>
+
+      <p class="subtitle">
+        Select your portal to continue.
+      </p>
+
+
+      <!-- Portal Selection -->
+      <div class="portal-grid">
+
+        <button
+          class="portal-card active"
+          type="button"
+          data-role="owner"
+        >
+          <span class="portal-icon">A</span>
+
+          <span class="portal-copy">
+            <strong>Admin</strong>
+            <small>Owner Portal</small>
+          </span>
+
+          <span class="portal-check">✓</span>
+        </button>
+
+
+        <button
+          class="portal-card"
+          type="button"
+          data-role="student"
+        >
+          <span class="portal-icon">L</span>
+
+          <span class="portal-copy">
+            <strong>Learner</strong>
+            <small>Student Portal</small>
+          </span>
+
+          <span class="portal-check">✓</span>
+        </button>
+
+      </div>
+
+
+      <!-- Login -->
+      <form id="loginForm" novalidate>
+
+        <!-- Login ID -->
+        <div class="field">
+
+          <label for="loginId">
+            Login ID
+          </label>
+
+          <div class="input-wrap">
+
+            <input
+              id="loginId"
+              name="loginId"
+              type="text"
+              autocomplete="username"
+              placeholder="Enter your login ID"
+              required
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- Password -->
+        <div class="field">
+
+          <div class="label-row">
+
+            <label for="password">
+              Password
+            </label>
+
+            <button
+              id="togglePassword"
+              class="text-btn"
+              type="button"
+            >
+              Show
+            </button>
+
+          </div>
+
+          <div class="input-wrap">
+
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              placeholder="Enter your password"
+              required
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- Options -->
+        <div class="form-options">
+
+          <label class="remember">
+
+            <input
+              id="rememberMe"
+              type="checkbox"
+            >
+
+            <span class="custom-check"></span>
+
+            <span>
+              Remember me
+            </span>
+
+          </label>
+
+
+          <button
+            id="forgotPassword"
+            class="text-btn"
+            type="button"
+          >
+            Forgot password?
+          </button>
+
+        </div>
+
+
+        <!-- Login Button -->
+        <button
+          id="loginBtn"
+          class="primary-btn"
+          type="submit"
+        >
+
+          <span>
+            Continue to Portal
+          </span>
+
+          <span class="arrow">
+            →
+          </span>
+
+        </button>
+
+
+        <p
+          id="formMessage"
+          class="form-message"
+          aria-live="polite"
+        ></p>
+
+      </form>
+
+
+      <!-- Security -->
+      <div class="security-note">
+
+        <span class="status-dot"></span>
+
+        <span>
+          Secure access for Mission Raj users
+        </span>
+
+      </div>
+
+
+      <!-- Footer -->
+      <footer>
+
+        <strong>
+          Mission Raj Library
+        </strong>
+
+        <span>
+          Master Colony • Kekri
+        </span>
+
+      </footer>
+
+    </section>
+
+  </main>
+
+
+<script src="js/auth.js"></script>
+<script src="js/app.js"></script>
+
+
+<!-- Mission Raj Library Loading Screen -->
+<div id="missionRajLoader" aria-label="Loading Mission Raj Library">
+  <div class="mr-loader-content">
+    <div class="mr-library-animation" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="mr-loader-title">Mission Raj Library</div>
+  </div>
+</div>
+
+<style>
+  #missionRajLoader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .35s ease, visibility .35s ease;
+  }
+
+  #missionRajLoader.mr-loader-hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .mr-loader-content {
+    text-align: center;
+  }
+
+  .mr-loader-title {
+    margin-top: 18px;
+    color: #172033;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: .2px;
+  }
+
+  .mr-library-animation {
+    height: 34px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .mr-library-animation span {
+    display: block;
+    width: 7px;
+    height: 24px;
+    border-radius: 3px 3px 1px 1px;
+    background: #2563eb;
+    transform-origin: bottom;
+    animation: mrBook 0.9s ease-in-out infinite;
+  }
+
+  .mr-library-animation span:nth-child(2) {
+    height: 30px;
+    animation-delay: .12s;
+  }
+
+  .mr-library-animation span:nth-child(3) {
+    height: 27px;
+    animation-delay: .24s;
+  }
+
+  .mr-library-animation span:nth-child(4) {
+    height: 22px;
+    animation-delay: .36s;
+  }
+
+  @keyframes mrBook {
+    0%, 100% {
+      transform: scaleY(.72);
+      opacity: .55;
+    }
+    50% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mr-library-animation span {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./sw.js").catch(() => {});
+    });
+  }
+
+  (() => {
+    const loader = document.getElementById("missionRajLoader");
+    if (!loader) return;
+
+    const start = Date.now();
+    const hideLoader = () => {
+      const remaining = Math.max(0, 800 - (Date.now() - start));
+      setTimeout(() => loader.classList.add("mr-loader-hide"), remaining);
+    };
+
+    if (document.readyState === "complete") {
+      hideLoader();
+    } else {
+      window.addEventListener("load", hideLoader, { once: true });
+    }
+
+    setTimeout(hideLoader, 1500);
+  })();
+</script>
+
+</body>
+</html>

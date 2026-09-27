@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Student Profile | Mission Raj Library</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/student-profile.css"
+    >
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                MR
+            </div>
+
+            <div class="brand-text">
+                <strong>Mission Raj</strong>
+                <span>Library Management</span>
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-location">
+            Master Colony, Kekri
+        </div>
+
+
+        <nav class="navigation">
+
+            <div class="nav-section-title">
+                MAIN
+            </div>
+
+
+            <a
+                href="owner-dashboard.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a
+                href="students.html"
+                class="nav-item active"
+            >
+                <span class="nav-icon">♙</span>
+                <span>Students</span>
+            </a>
+
+
+            <a
+                href="seats.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">▦</span>
+                <span>Seats</span>
+            </a>
+
+
+            <a
+                href="memberships.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">◇</span>
+                <span>Memberships</span>
+            </a>
+
+
+            <a
+                href="attendance.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">✓</span>
+                <span>Attendance</span>
+            </a>
+
+
+            <a
+                href="payments.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">₹</span>
+                <span>Fees & Payments</span>
+            </a>
+
+
+            <div class="nav-section-title">
+                MANAGEMENT
+            </div>
+
+
+            <a
+                href="notifications.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">◉</span>
+                <span>Notifications</span>
+                <span
+                    class="notification-badge"
+                    id="notificationBadge"
+                >
+                    0
+                </span>
+            </a>
+
+
+            <a
+                href="settings.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <div class="portal-label">
+                OWNER PORTAL
+            </div>
+
+            <button
+                type="button"
+                class="logout-btn"
+                id="logoutBtn"
+            >
+                <span>↪</span>
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="mobile-menu-btn"
+                    id="mobileMenuBtn"
+                >
+                    ☰
+                </button>
+
+
+                <div>
+
+                    <div class="page-eyebrow">
+                        OWNER PORTAL
+                    </div>
+
+                    <h1>
+                        Student Profile
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    type="button"
+                    class="icon-btn"
+                    id="notificationBtn"
+                >
+                    ◉
+
+                    <span
+                        class="notification-dot"
+                        id="notificationDot"
+                    ></span>
+                </button>
+
+
+                <div class="owner-profile">
+
+                    <div
+                        class="owner-avatar"
+                        id="ownerAvatar"
+                    >
+                        O
+                    </div>
+
+                    <div class="owner-info">
+
+                        <strong id="ownerName">
+                            Owner
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- PAGE -->
+        <section class="page-content">
+
+            <!-- BREADCRUMB -->
+            <div class="breadcrumb-row">
+
+                <a href="students.html">
+                    Students
+                </a>
+
+                <span>/</span>
+
+                <span>
+                    Student Profile
+                </span>
+
+            </div>
+
+
+            <!-- LOADING -->
+            <div
+                class="page-state"
+                id="pageLoading"
+            >
+
+                <div class="loading-spinner"></div>
+
+                <span>
+                    Loading student profile...
+                </span>
+
+            </div>
+
+
+            <!-- ERROR -->
+            <div
+                class="page-state error-state"
+                id="pageError"
+                style="display:none;"
+            >
+
+                <div class="error-icon">
+                    !
+                </div>
+
+                <h3>
+                    Unable to load student
+                </h3>
+
+                <p id="pageErrorMessage">
+                    Student record could not be loaded.
+                </p>
+
+                <button
+                    type="button"
+                    class="primary-btn"
+                    id="retryBtn"
+                >
+                    Try Again
+                </button>
+
+            </div>
+
+
+            <!-- PROFILE CONTENT -->
+            <div
+                id="profileContent"
+                style="display:none;"
+            >
+
+                <!-- PROFILE HEADER -->
+                <section class="profile-header-card">
+
+                    <div class="profile-main">
+
+                        <div
+                            class="large-avatar"
+                            id="studentAvatar"
+                        >
+                            ST
+                        </div>
+
+
+                        <div class="profile-heading">
+
+                            <div class="profile-title-row">
+
+                                <h2 id="studentName">
+                                    Student
+                                </h2>
+
+                                <span
+                                    class="status-badge"
+                                    id="studentStatus"
+                                >
+                                    Active
+                                </span>
+
+                            </div>
+
+
+                            <div class="student-id-line">
+
+                                <span>
+                                    Student ID:
+                                </span>
+
+                                <strong id="studentId">
+                                    —
+                                </strong>
+
+                            </div>
+
+
+                            <div class="profile-contact">
+
+                                <span id="studentMobile">
+                                    —
+                                </span>
+
+                                <span class="separator">
+                                    •
+                                </span>
+
+                                <span id="studentEmail">
+                                    —
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="profile-actions">
+
+                        <button
+                            type="button"
+                            class="secondary-btn"
+                            id="backBtn"
+                        >
+                            ← Back
+                        </button>
+
+                        <button
+                            type="button"
+                            class="primary-btn"
+                            id="editStudentBtn"
+                        >
+                            Edit Student
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- OVERVIEW -->
+                <section class="overview-grid">
+
+                    <div class="overview-card">
+
+                        <span class="overview-label">
+                            Membership
+                        </span>
+
+                        <strong id="membershipName">
+                            —
+                        </strong>
+
+                        <small id="membershipValidity">
+                            —
+                        </small>
+
+                    </div>
+
+
+                    <div class="overview-card">
+
+                        <span class="overview-label">
+                            Current Seat
+                        </span>
+
+                        <strong id="currentSeat">
+                            —
+                        </strong>
+
+                        <small id="seatStatus">
+                            —
+                        </small>
+
+                    </div>
+
+
+                    <div class="overview-card">
+
+                        <span class="overview-label">
+                            Pending Fee
+                        </span>
+
+                        <strong id="pendingFee">
+                            ₹0
+                        </strong>
+
+                        <small id="feeStatus">
+                            —
+                        </small>
+
+                    </div>
+
+
+                    <div class="overview-card">
+
+                        <span class="overview-label">
+                            Admission Date
+                        </span>
+
+                        <strong id="admissionDate">
+                            —
+                        </strong>
+
+                        <small>
+                            Registration date
+                        </small>
+
+                    </div>
+
+                </section>
+
+
+                <!-- CONTENT GRID -->
+                <div class="content-grid">
+
+                    <!-- LEFT -->
+                    <div class="content-column">
+
+                        <!-- MEMBERSHIP -->
+                        <section class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+                                    <h3>
+                                        Membership
+                                    </h3>
+
+                                    <span>
+                                        Current membership details
+                                    </span>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="panel-btn"
+                                    id="renewMembershipBtn"
+                                >
+                                    Renew Membership
+                                </button>
+
+                            </div>
+
+
+                            <div class="detail-grid">
+
+                                <div class="detail-item">
+
+                                    <span>
+                                        Plan
+                                    </span>
+
+                                    <strong id="detailPlan">
+                                        —
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="detail-item">
+
+                                    <span>
+                                        Status
+                                    </span>
+
+                                    <strong id="detailMembershipStatus">
+                                        —
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="detail-item">
+
+                                    <span>
+                                        Start Date
+                                    </span>
+
+                                    <strong id="detailStartDate">
+                                        —
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="detail-item">
+
+                                    <span>
+                                        End Date
+                                    </span>
+
+                                    <strong id="detailEndDate">
+                                        —
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+                        <!-- FEES -->
+                        <section class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+                                    <h3>
+                                        Fee Summary
+                                    </h3>
+
+                                    <span>
+                                        Current financial status
+                                    </span>
+                                </div>
+
+                                <a
+                                    href="payments.html"
+                                    class="panel-link"
+                                >
+                                    View Payments
+                                </a>
+
+                            </div>
+
+
+                            <div class="finance-summary">
+
+                                <div class="finance-item">
+
+                                    <span>
+                                        Total Fee
+                                    </span>
+
+                                    <strong id="totalFee">
+                                        ₹0
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="finance-item">
+
+                                    <span>
+                                        Paid
+                                    </span>
+
+                                    <strong
+                                        class="success-text"
+                                        id="paidFee"
+                                    >
+                                        ₹0
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="finance-item">
+
+                                    <span>
+                                        Pending
+                                    </span>
+
+                                    <strong
+                                        class="warning-text"
+                                        id="pendingFeeDetail"
+                                    >
+                                        ₹0
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                class="payment-history"
+                                id="paymentHistory"
+                            >
+
+                                <div class="empty-row">
+                                    Payment history will appear here.
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+                        <!-- ATTENDANCE -->
+                        <section class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+                                    <h3>
+                                        Attendance
+                                    </h3>
+
+                                    <span>
+                                        Recent check-in and check-out records
+                                    </span>
+                                </div>
+
+                                <a
+                                    href="attendance.html"
+                                    class="panel-link"
+                                >
+                                    View Attendance
+                                </a>
+
+                            </div>
+
+
+                            <div
+                                class="attendance-list"
+                                id="attendanceList"
+                            >
+
+                                <div class="empty-row">
+                                    Attendance history will appear here.
+                                </div>
+
+                            </div>
+
+                        </section>
+
+                    </div>
+
+
+                    <!-- RIGHT -->
+                    <div class="content-column">
+
+                        <!-- PERSONAL -->
+                        <section class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+                                    <h3>
+                                        Personal Information
+                                    </h3>
+
+                                    <span>
+                                        Registered student details
+                                    </span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="personal-details">
+
+                                <div class="personal-item">
+
+                                    <span>
+                                        Full Name
+                                    </span>
+
+                                    <strong id="personalName">
+                                        —
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="personal-item">
+
+                                    <span>
+                                        Mobile
+                                    </span>
+
+                                    <strong id="personalMobile">
+                                        —
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="personal-item">
+
+                                    <span>
+                                        Email
+                                    </span>
+
+                                    <strong id="personalEmail">
+                                        —
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="personal-item">
+
+                                    <span>
+                                        Admission Date
+                                    </span>
+
+                                    <strong id="personalAdmissionDate">
+                                        —
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="personal-item full">
+
+                                    <span>
+                                        Address
+                                    </span>
+
+                                    <strong id="personalAddress">
+                                        —
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+                        <!-- SEAT -->
+                        <section class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+                                    <h3>
+                                        Seat Information
+                                    </h3>
+
+                                    <span>
+                                        Current allocation
+                                    </span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="seat-card">
+
+                                <div class="seat-icon">
+                                    ▦
+                                </div>
+
+                                <div>
+
+                                    <strong id="seatNumber">
+                                        No Seat Assigned
+                                    </strong>
+
+                                    <span id="seatDescription">
+                                        No current seat allocation.
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                class="seat-history"
+                                id="seatHistory"
+                            >
+
+                                <div class="empty-row">
+                                    Seat allocation history will appear here.
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+                        <!-- NOTIFICATIONS -->
+                        <section class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+                                    <h3>
+                                        Recent Notifications
+                                    </h3>
+
+                                    <span>
+                                        Student-related notifications
+                                    </span>
+                                </div>
+
+                                <a
+                                    href="notifications.html"
+                                    class="panel-link"
+                                >
+                                    View All
+                                </a>
+
+                            </div>
+
+
+                            <div
+                                class="notification-list"
+                                id="notificationList"
+                            >
+
+                                <div class="empty-row">
+                                    Notifications will appear here.
+                                </div>
+
+                            </div>
+
+                        </section>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- MOBILE OVERLAY -->
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<!-- EDIT MODAL -->
+<div
+    class="modal-backdrop"
+    id="editModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <div class="modal-eyebrow">
+                    STUDENT RECORD
+                </div>
+
+                <h2>
+                    Edit Student
+                </h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeEditModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="editStudentForm">
+
+            <div class="form-section">
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+
+                        <label>
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="editName"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Mobile
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="editMobile"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="editEmail"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label>
+                            Address
+                        </label>
+
+                        <textarea
+                            id="editAddress"
+                            rows="3"
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="form-error"
+                id="editFormError"
+            ></div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    id="cancelEditBtn"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                    id="saveEditBtn"
+                >
+                    Save Changes
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- RENEW MEMBERSHIP MODAL -->
+<div
+    class="modal-backdrop"
+    id="renewModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <div class="modal-eyebrow">
+                    MEMBERSHIP
+                </div>
+
+                <h2>
+                    Renew Membership
+                </h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeRenewModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="renewForm">
+
+            <div class="form-section">
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+
+                        <label>
+                            Plan
+                        </label>
+
+                        <select id="renewPlan" required>
+                            <option value="">Select plan</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Start Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="renewStartDate"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            End Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="renewEndDate"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Amount to Collect Now (₹)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="renewAmount"
+                            min="0"
+                            step="1"
+                            value="0"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Payment Mode
+                        </label>
+
+                        <select id="renewPaymentMode">
+                            <option value="">Select mode</option>
+                            <option value="cash">Cash</option>
+                            <option value="upi">UPI</option>
+                            <option value="card">Card</option>
+                            <option value="bank">Bank Transfer</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="form-error"
+                id="renewFormError"
+            ></div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    id="cancelRenewBtn"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                    id="saveRenewBtn"
+                >
+                    Confirm Renewal
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+<div
+    class="toast"
+    id="toast"
+>
+    <span id="toastMessage"></span>
+</div>
+
+
+<script src="js/student-profile.js"></script>
+
+<script src="js/notification-badge.js"></script>
+</body>
+</html>

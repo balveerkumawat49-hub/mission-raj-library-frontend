@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Settings | Mission Raj Library</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="css/settings.css">
+</head>
+
+<body>
+
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="owner-sidebar" id="ownerSidebar">
+
+      <div class="sidebar-brand">
+        <div class="brand-mark">MR</div>
+
+        <div class="brand-text">
+          <strong>Mission Raj</strong>
+          <span>Library Management</span>
+        </div>
+      </div>
+
+      <div class="sidebar-location">
+        <span class="location-dot"></span>
+        <span>Master Colony, Kekri</span>
+      </div>
+
+      <nav class="sidebar-nav">
+
+        <a href="owner-dashboard.html" class="nav-item">
+          <span class="nav-icon">⌂</span>
+          <span>Dashboard</span>
+        </a>
+
+        <a href="students.html" class="nav-item">
+          <span class="nav-icon">♙</span>
+          <span>Students</span>
+        </a>
+
+        <a href="seats.html" class="nav-item">
+          <span class="nav-icon">▦</span>
+          <span>Seats</span>
+        </a>
+
+        <a href="memberships.html" class="nav-item">
+          <span class="nav-icon">▤</span>
+          <span>Memberships</span>
+        </a>
+
+        <a href="attendance.html" class="nav-item">
+          <span class="nav-icon">✓</span>
+          <span>Attendance</span>
+        </a>
+
+        <a href="payments.html" class="nav-item">
+          <span class="nav-icon">₹</span>
+          <span>Fees &amp; Payments</span>
+        </a>
+
+        <a href="notifications.html" class="nav-item">
+          <span class="nav-icon">◌</span>
+          <span>Notifications</span>
+        </a>
+
+        <a href="#" class="nav-item">
+          <span class="nav-icon">▥</span>
+          <span>Reports</span>
+        </a>
+
+        <a href="settings.html" class="nav-item active">
+          <span class="nav-icon">⚙</span>
+          <span>Settings</span>
+        </a>
+
+      </nav>
+
+      <div class="sidebar-bottom">
+
+        <div class="owner-mini-profile">
+          <div class="mini-avatar" id="sidebarAvatar">MR</div>
+
+          <div class="mini-profile-text">
+            <strong id="sidebarOwnerName">Owner</strong>
+            <span id="sidebarOwnerRole">Owner</span>
+          </div>
+        </div>
+
+        <button type="button" class="logout-button" id="logoutBtn">
+          <span>↪</span>
+          <span>Logout</span>
+        </button>
+
+      </div>
+
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+      <!-- TOPBAR -->
+      <header class="topbar">
+
+        <div class="topbar-left">
+
+          <button
+            type="button"
+            class="mobile-menu-button"
+            id="mobileMenuBtn"
+            aria-label="Open menu"
+          >
+            ☰
+          </button>
+
+          <div>
+            <div class="portal-label">OWNER PORTAL</div>
+            <div class="topbar-title">Settings</div>
+          </div>
+
+        </div>
+
+        <div class="topbar-right">
+
+          <button
+            type="button"
+            class="notification-button"
+            id="notificationBtn"
+            aria-label="Notifications"
+          >
+            ◌
+            <span class="notification-badge" id="notificationBadge" hidden>
+              0
+            </span>
+          </button>
+
+          <div class="topbar-owner">
+
+            <div class="topbar-avatar" id="topbarAvatar">MR</div>
+
+            <div>
+              <strong id="topbarOwnerName">Owner</strong>
+              <span>Library Owner</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </header>
+
+      <!-- PAGE -->
+      <section class="page-container">
+
+        <div class="page-heading">
+
+          <div>
+            <div class="breadcrumb">
+              Owner / Settings
+            </div>
+
+            <h1>Library Settings</h1>
+
+            <p>
+              Manage your library information, operating rules, payments and notifications.
+            </p>
+          </div>
+
+          <div class="heading-actions">
+
+            <span class="save-state" id="saveState">
+              All changes saved
+            </span>
+
+            <button
+              type="button"
+              class="secondary-button"
+              id="resetBtn"
+            >
+              Reset
+            </button>
+
+            <button
+              type="button"
+              class="primary-button"
+              id="saveAllBtn"
+            >
+              Save Changes
+            </button>
+
+          </div>
+
+        </div>
+
+        <!-- GLOBAL API STATE -->
+        <div class="page-state loading-state" id="pageLoading">
+          <div class="loader"></div>
+          <span>Loading settings...</span>
+        </div>
+
+        <div class="page-state error-state" id="pageError" hidden>
+          <strong>Unable to load settings</strong>
+          <span id="pageErrorText">
+            Please check the backend connection.
+          </span>
+          <button type="button" id="retryBtn">Retry</button>
+        </div>
+
+        <form id="settingsForm" novalidate hidden>
+
+          <!-- LIBRARY PROFILE -->
+          <section class="settings-card">
+
+            <div class="card-heading">
+
+              <div class="section-icon">⌂</div>
+
+              <div>
+                <h2>Library Profile</h2>
+                <p>
+                  Information displayed across the library management system.
+                </p>
+              </div>
+
+            </div>
+
+            <div class="form-grid">
+
+              <div class="field">
+                <label for="libraryName">
+                  Library Name <span>*</span>
+                </label>
+                <input
+                  id="libraryName"
+                  name="libraryName"
+                  type="text"
+                  maxlength="120"
+                  autocomplete="organization"
+                  placeholder="Mission Raj Library"
+                  required
+                >
+              </div>
+
+              <div class="field">
+                <label for="libraryPhone">
+                  Contact Number
+                </label>
+                <input
+                  id="libraryPhone"
+                  name="libraryPhone"
+                  type="tel"
+                  maxlength="20"
+                  autocomplete="tel"
+                  placeholder="+91 XXXXX XXXXX"
+                >
+              </div>
+
+              <div class="field">
+                <label for="libraryEmail">
+                  Email
+                </label>
+                <input
+                  id="libraryEmail"
+                  name="libraryEmail"
+                  type="email"
+                  maxlength="160"
+                  autocomplete="email"
+                  placeholder="library@example.com"
+                >
+              </div>
+
+              <div class="field">
+                <label for="libraryWebsite">
+                  Website
+                </label>
+                <input
+                  id="libraryWebsite"
+                  name="libraryWebsite"
+                  type="url"
+                  maxlength="250"
+                  placeholder="https://..."
+                >
+              </div>
+
+              <div class="field field-full">
+                <label for="libraryAddress">
+                  Address
+                </label>
+                <textarea
+                  id="libraryAddress"
+                  name="libraryAddress"
+                  rows="3"
+                  maxlength="400"
+                  placeholder="Master Colony, Kekri, Rajasthan"
+                ></textarea>
+              </div>
+
+              <div class="field">
+                <label for="libraryCity">City</label>
+                <input
+                  id="libraryCity"
+                  name="libraryCity"
+                  type="text"
+                  maxlength="80"
+                  placeholder="Kekri"
+                >
+              </div>
+
+              <div class="field">
+                <label for="libraryState">State</label>
+                <input
+                  id="libraryState"
+                  name="libraryState"
+                  type="text"
+                  maxlength="80"
+                  placeholder="Rajasthan"
+                >
+              </div>
+
+            </div>
+
+          </section>
+
+          <!-- OPERATING SETTINGS -->
+          <section class="settings-card">
+
+            <div class="card-heading">
+
+              <div class="section-icon">◷</div>
+
+              <div>
+                <h2>Operating Settings</h2>
+                <p>
+                  Define the library's daily operating schedule.
+                </p>
+              </div>
+
+            </div>
+
+            <div class="form-grid">
+
+              <div class="field">
+                <label for="openingTime">Opening Time</label>
+                <input
+                  id="openingTime"
+                  name="openingTime"
+                  type="time"
+                >
+              </div>
+
+              <div class="field">
+                <label for="closingTime">Closing Time</label>
+                <input
+                  id="closingTime"
+                  name="closingTime"
+                  type="time"
+                >
+              </div>
+
+              <div class="field">
+                <label for="timezone">Timezone</label>
+                <select id="timezone" name="timezone">
+                  <option value="Asia/Kolkata">
+                    India — Asia/Kolkata
+                  </option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="currency">Currency</label>
+                <select id="currency" name="currency">
+                  <option value="INR">INR — Indian Rupee</option>
+                  <option value="USD">USD — US Dollar</option>
+                  <option value="EUR">EUR — Euro</option>
+                </select>
+              </div>
+
+              <div class="field field-full">
+                <label class="switch-row">
+
+                  <span>
+                    <strong>Allow student check-in after closing time</strong>
+                    <small>
+                      Keep this enabled only if your library permits late access.
+                    </small>
+                  </span>
+
+                  <input
+                    id="allowAfterClosing"
+                    name="allowAfterClosing"
+                    type="checkbox"
+                  >
+
+                  <span class="switch"></span>
+
+                </label>
+              </div>
+
+            </div>
+
+          </section>
+
+          <!-- ATTENDANCE -->
+          <section class="settings-card">
+
+            <div class="card-heading">
+
+              <div class="section-icon">✓</div>
+
+              <div>
+                <h2>Attendance &amp; Check-in</h2>
+                <p>
+                  Control how student visits and attendance are handled.
+                </p>
+              </div>
+
+            </div>
+
+            <div class="form-grid">
+
+              <div class="field">
+                <label for="minimumVisitMinutes">
+                  Minimum Visit Duration
+                </label>
+
+                <div class="input-with-suffix">
+                  <input
+                    id="minimumVisitMinutes"
+                    name="minimumVisitMinutes"
+                    type="number"
+                    min="0"
+                    max="1440"
+                    step="1"
+                  >
+                  <span>minutes</span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="autoCheckoutHours">
+                  Auto Checkout After
+                </label>
+
+                <div class="input-with-suffix">
+                  <input
+                    id="autoCheckoutHours"
+                    name="autoCheckoutHours"
+                    type="number"
+                    min="0"
+                    max="24"
+                    step="1"
+                  >
+                  <span>hours</span>
+                </div>
+              </div>
+
+              <div class="field field-full">
+
+                <label class="switch-row">
+
+                  <span>
+                    <strong>Allow visits after membership expiry</strong>
+                    <small>
+                      Visits remain recorded and can be reviewed by the owner.
+                    </small>
+                  </span>
+
+                  <input
+                    id="allowExpiredVisits"
+                    name="allowExpiredVisits"
+                    type="checkbox"
+                  >
+
+                  <span class="switch"></span>
+
+                </label>
+
+              </div>
+
+              <div class="field field-full">
+
+                <label class="switch-row">
+
+                  <span>
+                    <strong>Require seat for check-in</strong>
+                    <small>
+                      Students must have an allocated seat before checking in.
+                    </small>
+                  </span>
+
+                  <input
+                    id="requireSeatForCheckin"
+                    name="requireSeatForCheckin"
+                    type="checkbox"
+                  >
+
+                  <span class="switch"></span>
+
+                </label>
+
+              </div>
+
+            </div>
+
+          </section>
+
+          <!-- MEMBERSHIP -->
+          <section class="settings-card">
+
+            <div class="card-heading">
+
+              <div class="section-icon">▤</div>
+
+              <div>
+                <h2>Membership &amp; Renewal</h2>
+                <p>
+                  Configure membership expiry and renewal reminders.
+                </p>
+              </div>
+
+            </div>
+
+            <div class="form-grid">
+
+              <div class="field">
+                <label for="expiryReminderDays">
+                  Expiry Reminder
+                </label>
+
+                <div class="input-with-suffix">
+                  <input
+                    id="expiryReminderDays"
+                    name="expiryReminderDays"
+                    type="number"
+                    min="0"
+                    max="365"
+                    step="1"
+                  >
+                  <span>days before</span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="gracePeriodDays">
+                  Grace Period
+                </label>
+
+                <div class="input-with-suffix">
+                  <input
+                    id="gracePeriodDays"
+                    name="gracePeriodDays"
+                    type="number"
+                    min="0"
+                    max="365"
+                    step="1"
+                  >
+                  <span>days</span>
+                </div>
+              </div>
+
+              <div class="field field-full">
+
+                <label class="switch-row">
+
+                  <span>
+                    <strong>Enable automatic expiry reminders</strong>
+                    <small>
+                      Notify students when their membership is approaching expiry.
+                    </small>
+                  </span>
+
+                  <input
+                    id="membershipExpiryNotifications"
+                    name="membershipExpiryNotifications"
+                    type="checkbox"
+                  >
+
+                  <span class="switch"></span>
+
+                </label>
+
+              </div>
+
+              <div class="field field-full">
+
+                <label class="switch-row">
+
+                  <span>
+                    <strong>Allow renewal before expiry</strong>
+                    <small>
+                      Owners can renew an active membership before its end date.
+                    </small>
+                  </span>
+
+                  <input
+                    id="allowEarlyRenewal"
+                    name="allowEarlyRenewal"
+                    type="checkbox"
+                  >
+
+                  <span class="switch"></span>
+
+                </label>
+
+              </div>
+
+            </div>
+
+          </section>
+
+          <!-- PAYMENT -->
+          <section class="settings-card">
+
+            <div class="card-heading">
+
+              <div class="section-icon">₹</div>
+
+              <div>
+                <h2>Payments &amp; Receipts</h2>
+                <p>
+                  Configure payment records and receipt information.
+                </p>
+              </div>
+
+            </div>
+
+            <div class="form-grid">
+
+              <div class="field">
+                <label for="receiptPrefix">
+                  Receipt Prefix
+                </label>
+
+                <input
+                  id="receiptPrefix"
+                  name="receiptPrefix"
+                  type="text"
+                  maxlength="20"
+                  placeholder="MRL"
+                >
+
+                <small class="field-help">
+                  Used by the backend when generating receipt numbers, if supported.
+                </small>
+              </div>
+
+              <div class="field">
+                <label for="receiptFooter">
+                  Receipt Footer
+                </label>
+
+                <input
+                  id="receiptFooter"
+                  name="receiptFooter"
+                  type="text"
+                  maxlength="200"
+                  placeholder="Thank you for using Mission Raj Library."
+                >
+              </div>
+
+              <div class="field field-full">
+
+                <label>Accepted Payment Modes</label>
+
+                <div class="checkbox-grid">
+
+                  <label class="check-item">
+                    <input
+                      type="checkbox"
+                      name="paymentMode"
+                      value="cash"
+                    >
+                    <span>Cash</span>
+                  </label>
+
+                  <label class="check-item">
+                    <input
+                      type="checkbox"
+                      name="paymentMode"
+                      value="upi"
+                    >
+                    <span>UPI</span>
+                  </label>
+
+                  <label class="check-item">
+                    <input
+                      type="checkbox"
+                      name="paymentMode"
+                      value="card"
+                    >
+                    <span>Card</span>
+                  </label>
+
+                  <label class="check-item">
+                    <input
+                      type="checkbox"
+                      name="paymentMode"
+                      value="bank_transfer"
+                    >
+                    <span>Bank Transfer</span>
+                  </label>
+
+                  <label class="check-item">
+                    <input
+                      type="checkbox"
+                      name="paymentMode"
+                      value="cheque"
+                    >
+                    <span>Cheque</span>
+                  </label>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+          <!-- NOTIFICATIONS -->
+          <section class="settings-card">
+
+            <div class="card-heading">
+
+              <div class="section-icon">◌</div>
+
+              <div>
+                <h2>Notifications</h2>
+                <p>
+                  Control automatic library notifications.
+                </p>
+              </div>
+
+            </div>
+
+            <div class="notification-settings">
+
+              <label class="switch-row">
+
+                <span>
+                  <strong>Payment notifications</strong>
+                  <small>
+                    Notify when a payment is recorded.
+                  </small>
+                </span>
+
+                <input
+                  id="paymentNotifications"
+                  type="checkbox"
+                >
+
+                <span class="switch"></span>
+
+              </label>
+
+              <label class="switch-row">
+
+                <span>
+                  <strong>Seat change notifications</strong>
+                  <small>
+                    Notify students when their seat is changed.
+                  </small>
+                </span>
+
+                <input
+                  id="seatNotifications"
+                  type="checkbox"
+                >
+
+                <span class="switch"></span>
+
+              </label>
+
+              <label class="switch-row">
+
+                <span>
+                  <strong>Fee due notifications</strong>
+                  <small>
+                    Notify students about pending fees.
+                  </small>
+                </span>
+
+                <input
+                  id="feeDueNotifications"
+                  type="checkbox"
+                >
+
+                <span class="switch"></span>
+
+              </label>
+
+              <label class="switch-row">
+
+                <span>
+                  <strong>Admission notifications</strong>
+                  <small>
+                    Create an owner notification when a new student is admitted.
+                  </small>
+                </span>
+
+                <input
+                  id="admissionNotifications"
+                  type="checkbox"
+                >
+
+                <span class="switch"></span>
+
+              </label>
+
+            </div>
+
+          </section>
+
+          <!-- SECURITY -->
+          <section class="settings-card">
+
+            <div class="card-heading">
+
+              <div class="section-icon">⌁</div>
+
+              <div>
+                <h2>Security</h2>
+                <p>
+                  Account security actions are handled by the authentication system.
+                </p>
+              </div>
+
+            </div>
+
+            <div class="security-row">
+
+              <div>
+                <strong>Owner account</strong>
+                <span id="securityOwnerEmail">
+                  Loading...
+                </span>
+              </div>
+
+              <button
+                type="button"
+                class="secondary-button"
+                id="changePasswordBtn"
+              >
+                Change Password
+              </button>
+
+            </div>
+
+            <div class="security-note">
+              Password changes are sent to the authentication backend.
+              No password is stored in browser storage by this page.
+            </div>
+
+          </section>
+
+          <!-- BOTTOM SAVE -->
+          <div class="bottom-save-bar">
+
+            <div>
+              <strong>Settings</strong>
+              <span id="bottomSaveMessage">
+                Changes are saved to the server.
+              </span>
+            </div>
+
+            <div class="bottom-actions">
+
+              <button
+                type="button"
+                class="secondary-button"
+                id="bottomResetBtn"
+              >
+                Discard Changes
+              </button>
+
+              <button
+                type="submit"
+                class="primary-button"
+                id="bottomSaveBtn"
+              >
+                Save Changes
+              </button>
+
+            </div>
+
+          </div>
+
+        </form>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- CHANGE PASSWORD MODAL -->
+  <div class="modal-backdrop" id="passwordModal" hidden>
+
+    <div
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="passwordModalTitle"
+    >
+
+      <div class="modal-header">
+
+        <div>
+          <span class="modal-kicker">SECURITY</span>
+          <h2 id="passwordModalTitle">Change Password</h2>
+        </div>
+
+        <button
+          type="button"
+          class="modal-close"
+          id="closePasswordModal"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <form id="passwordForm">
+
+        <div class="modal-body">
+
+          <div class="field">
+            <label for="currentPassword">
+              Current Password
+            </label>
+            <input
+              id="currentPassword"
+              type="password"
+              autocomplete="current-password"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="newPassword">
+              New Password
+            </label>
+            <input
+              id="newPassword"
+              type="password"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="confirmPassword">
+              Confirm New Password
+            </label>
+            <input
+              id="confirmPassword"
+              type="password"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            >
+          </div>
+
+          <p class="password-help">
+            Use at least 8 characters. Your password is sent only to the
+            authentication backend.
+          </p>
+
+        </div>
+
+        <div class="modal-footer">
+
+          <button
+            type="button"
+            class="secondary-button"
+            id="cancelPasswordBtn"
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="primary-button"
+            id="changePasswordSubmit"
+          >
+            Update Password
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast" hidden>
+    <span class="toast-title" id="toastTitle"></span>
+    <span class="toast-message" id="toastMessage"></span>
+  </div>
+
+  <script src="js/settings.js"></script>
+
+<script src="js/notification-badge.js"></script>
+</body>
+</html>

@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <meta name="theme-color" content="#2563eb">
+
+  <title>Notifications | Mission Raj Library</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="css/onwer-dashboard.css">
+  <link rel="stylesheet" href="css/notifications.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+  <!-- ================= SIDEBAR ================= -->
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+      <div class="brand-logo">MR</div>
+
+      <div class="brand-text">
+        <strong>Mission Raj</strong>
+        <span>Library</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section-title">
+      OVERVIEW
+    </div>
+
+    <nav class="navigation">
+
+      <a
+        href="owner-dashboard.html"
+        class="nav-item"
+        data-page="dashboard"
+      >
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+
+      <a
+        href="students.html"
+        class="nav-item"
+        data-page="students"
+      >
+        <span class="nav-icon">◉</span>
+        <span>Students</span>
+      </a>
+
+      <a
+        href="seats.html"
+        class="nav-item"
+        data-page="seats"
+      >
+        <span class="nav-icon">▦</span>
+        <span>Seats</span>
+      </a>
+
+      <a
+        href="memberships.html"
+        class="nav-item"
+        data-page="memberships"
+      >
+        <span class="nav-icon">◇</span>
+        <span>Memberships</span>
+      </a>
+
+      <a
+        href="attendance.html"
+        class="nav-item"
+        data-page="attendance"
+      >
+        <span class="nav-icon">✓</span>
+        <span>Attendance</span>
+      </a>
+
+      <a
+        href="payments.html"
+        class="nav-item"
+        data-page="payments"
+      >
+        <span class="nav-icon">₹</span>
+        <span>Fees & Payments</span>
+      </a>
+
+      <div class="sidebar-section-title second">
+        MANAGEMENT
+      </div>
+
+      <a
+        href="notifications.html"
+        class="nav-item active"
+        data-page="notifications"
+      >
+        <span class="nav-icon">○</span>
+        <span>Notifications</span>
+
+        <span
+          class="nav-badge"
+          id="notificationBadge"
+        >
+          0
+        </span>
+      </a>
+
+      <a
+        href="#"
+        class="nav-item"
+        data-page="reports"
+      >
+        <span class="nav-icon">▥</span>
+        <span>Reports</span>
+      </a>
+
+      <a
+        href="settings.html"
+        class="nav-item"
+        data-page="settings"
+      >
+        <span class="nav-icon">⚙</span>
+        <span>Settings</span>
+      </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+      <div class="location-box">
+        <span class="location-dot"></span>
+
+        <div>
+          <strong>Master Colony</strong>
+          <small>Kekri, Rajasthan</small>
+        </div>
+      </div>
+
+      <button
+        class="logout-btn"
+        id="logoutBtn"
+        type="button"
+      >
+        <span>↪</span>
+        Logout
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- ================= MAIN ================= -->
+
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <button
+        class="mobile-menu"
+        id="mobileMenu"
+        type="button"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
+      <div class="page-title">
+        <span>OWNER PORTAL</span>
+
+        <h1>Notifications</h1>
+      </div>
+
+      <div class="topbar-actions">
+
+        <button
+          class="icon-button notification-button"
+          type="button"
+          id="refreshBtn"
+          aria-label="Refresh notifications"
+        >
+          ↻
+        </button>
+
+        <button
+          class="primary-btn"
+          type="button"
+          id="openCreateBtn"
+        >
+          + Create Notification
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <!-- ================= PAGE ================= -->
+
+    <section class="notification-page">
+
+      <!-- KPI -->
+
+      <div class="notification-stats">
+
+        <div class="notification-stat">
+          <span>Total</span>
+          <strong id="totalCount">—</strong>
+        </div>
+
+        <div class="notification-stat">
+          <span>Unread</span>
+          <strong id="unreadCount">—</strong>
+        </div>
+
+        <div class="notification-stat">
+          <span>Important</span>
+          <strong id="importantCount">—</strong>
+        </div>
+
+        <div class="notification-stat">
+          <span>Sent Today</span>
+          <strong id="sentTodayCount">—</strong>
+        </div>
+
+      </div>
+
+
+      <!-- MAIN CARD -->
+
+      <div class="notification-card">
+
+        <div class="notification-card-header">
+
+          <div class="notification-tabs">
+
+            <button
+              class="notification-tab active"
+              data-view="inbox"
+              type="button"
+            >
+              Inbox
+            </button>
+
+            <button
+              class="notification-tab"
+              data-view="sent"
+              type="button"
+            >
+              Sent
+            </button>
+
+            <button
+              class="notification-tab"
+              data-view="automation"
+              type="button"
+            >
+              Automatic Alerts
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- ================= INBOX ================= -->
+
+        <section
+          class="notification-view active"
+          id="inboxView"
+        >
+
+          <div class="notification-toolbar">
+
+            <div class="notification-search">
+
+              <span>⌕</span>
+
+              <input
+                type="search"
+                id="searchInput"
+                placeholder="Search notifications..."
+                autocomplete="off"
+              >
+
+            </div>
+
+            <select id="typeFilter">
+              <option value="all">All Types</option>
+              <option value="general">General</option>
+              <option value="student">Student</option>
+              <option value="fee">Fee</option>
+              <option value="attendance">Attendance</option>
+              <option value="seat">Seat</option>
+              <option value="system">System</option>
+              <option value="notice">Notice</option>
+            </select>
+
+            <select id="priorityFilter">
+              <option value="all">All Priority</option>
+              <option value="normal">Normal</option>
+              <option value="high">Important</option>
+              <option value="urgent">Urgent</option>
+            </select>
+
+          </div>
+
+
+          <div class="notification-filter-tabs">
+
+            <button
+              class="active"
+              data-filter="all"
+              type="button"
+            >
+              All
+            </button>
+
+            <button
+              data-filter="unread"
+              type="button"
+            >
+              Unread
+            </button>
+
+            <button
+              data-filter="important"
+              type="button"
+            >
+              Important
+            </button>
+
+          </div>
+
+
+          <div
+            class="bulk-actions hidden"
+            id="bulkActions"
+          >
+
+            <label>
+              <input
+                type="checkbox"
+                id="selectAll"
+              >
+              Select all
+            </label>
+
+            <span id="selectedCount">
+              0 selected
+            </span>
+
+            <button
+              type="button"
+              class="secondary-btn"
+              id="markSelectedBtn"
+            >
+              Mark as read
+            </button>
+
+          </div>
+
+
+          <div
+            id="notificationList"
+            class="notification-list"
+          ></div>
+
+
+          <div
+            id="pagination"
+            class="notification-pagination"
+          ></div>
+
+        </section>
+
+
+        <!-- ================= SENT ================= -->
+
+        <section
+          class="notification-view"
+          id="sentView"
+        >
+
+          <div class="notification-toolbar">
+
+            <div class="notification-search">
+
+              <span>⌕</span>
+
+              <input
+                type="search"
+                id="sentSearchInput"
+                placeholder="Search sent notifications..."
+                autocomplete="off"
+              >
+
+            </div>
+
+            <select id="sentTypeFilter">
+              <option value="all">All Types</option>
+              <option value="general">General</option>
+              <option value="notice">Notice</option>
+              <option value="student">Student</option>
+              <option value="fee">Fee</option>
+              <option value="attendance">Attendance</option>
+              <option value="seat">Seat</option>
+            </select>
+
+          </div>
+
+
+          <div class="table-container">
+
+            <table class="notification-table">
+
+              <thead>
+                <tr>
+                  <th>Notification</th>
+                  <th>Recipients</th>
+                  <th>Type</th>
+                  <th>Priority</th>
+                  <th>Sent</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody id="sentTableBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </section>
+
+
+        <!-- ================= AUTOMATIONS ================= -->
+
+        <section
+          class="notification-view"
+          id="automationView"
+        >
+
+          <div class="automation-intro">
+
+            <div>
+              <span class="eyebrow">
+                AUTOMATION ENGINE
+              </span>
+
+              <h2>
+                Automatic Notifications
+              </h2>
+
+              <p>
+                These notifications will be generated by
+                the backend when the corresponding event occurs.
+              </p>
+            </div>
+
+            <span class="backend-status">
+              BACKEND READY
+            </span>
+
+          </div>
+
+
+          <div
+            class="automation-list"
+            id="automationList"
+          >
+
+            <div class="automation-row">
+
+              <div class="automation-icon">
+                +
+              </div>
+
+              <div class="automation-content">
+
+                <strong>
+                  New Student
+                </strong>
+
+                <p>
+                  Send a welcome notification when
+                  a new student is created.
+                </p>
+
+                <code>
+                  STUDENT_CREATED
+                </code>
+
+              </div>
+
+              <label class="toggle">
+
+                <input
+                  type="checkbox"
+                  data-rule="STUDENT_CREATED"
+                >
+
+                <span></span>
+
+              </label>
+
+            </div>
+
+
+            <div class="automation-row">
+
+              <div class="automation-icon">
+                ₹
+              </div>
+
+              <div class="automation-content">
+
+                <strong>
+                  Fee Due
+                </strong>
+
+                <p>
+                  Notify students before their fee
+                  due date.
+                </p>
+
+                <code>
+                  FEE_DUE
+                </code>
+
+              </div>
+
+              <label class="toggle">
+
+                <input
+                  type="checkbox"
+                  data-rule="FEE_DUE"
+                >
+
+                <span></span>
+
+              </label>
+
+            </div>
+
+
+            <div class="automation-row">
+
+              <div class="automation-icon">
+                !
+              </div>
+
+              <div class="automation-content">
+
+                <strong>
+                  Fee Overdue
+                </strong>
+
+                <p>
+                  Notify students when a fee becomes overdue.
+                </p>
+
+                <code>
+                  FEE_OVERDUE
+                </code>
+
+              </div>
+
+              <label class="toggle">
+
+                <input
+                  type="checkbox"
+                  data-rule="FEE_OVERDUE"
+                >
+
+                <span></span>
+
+              </label>
+
+            </div>
+
+
+            <div class="automation-row">
+
+              <div class="automation-icon">
+                ▦
+              </div>
+
+              <div class="automation-content">
+
+                <strong>
+                  Seat Expiring
+                </strong>
+
+                <p>
+                  Notify students before their seat validity
+                  expires.
+                </p>
+
+                <code>
+                  SEAT_EXPIRING
+                </code>
+
+              </div>
+
+              <label class="toggle">
+
+                <input
+                  type="checkbox"
+                  data-rule="SEAT_EXPIRING"
+                >
+
+                <span></span>
+
+              </label>
+
+            </div>
+
+
+            <div class="automation-row">
+
+              <div class="automation-icon">
+                ×
+              </div>
+
+              <div class="automation-content">
+
+                <strong>
+                  Seat Expired
+                </strong>
+
+                <p>
+                  Notify students after their seat validity
+                  expires.
+                </p>
+
+                <code>
+                  SEAT_EXPIRED
+                </code>
+
+              </div>
+
+              <label class="toggle">
+
+                <input
+                  type="checkbox"
+                  data-rule="SEAT_EXPIRED"
+                >
+
+                <span></span>
+
+              </label>
+
+            </div>
+
+
+            <div class="automation-row">
+
+              <div class="automation-icon">
+                ✓
+              </div>
+
+              <div class="automation-content">
+
+                <strong>
+                  Attendance Alert
+                </strong>
+
+                <p>
+                  Notify students when attendance reaches
+                  configured alert conditions.
+                </p>
+
+                <code>
+                  ATTENDANCE_ALERT
+                </code>
+
+              </div>
+
+              <label class="toggle">
+
+                <input
+                  type="checkbox"
+                  data-rule="ATTENDANCE_ALERT"
+                >
+
+                <span></span>
+
+              </label>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<!-- ================= CREATE MODAL ================= -->
+
+<div
+  class="modal-overlay hidden"
+  id="createModal"
+>
+
+  <div
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="createModalTitle"
+  >
+
+    <div class="modal-header">
+
+      <div>
+        <span class="eyebrow">
+          COMMUNICATION CENTER
+        </span>
+
+        <h2 id="createModalTitle">
+          Create Notification
+        </h2>
+      </div>
+
+      <button
+        class="modal-close"
+        type="button"
+        data-close="createModal"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <form id="notificationForm">
+
+      <div class="form-grid">
+
+        <div class="form-field full">
+
+          <label for="recipientType">
+            Send To
+          </label>
+
+          <select
+            id="recipientType"
+            required
+           multiple>
+            <option value="all">
+              All Students
+            </option>
+
+            <option value="student">
+              Specific Student
+            </option>
+
+            <option value="multiple">
+              Multiple Students
+            </option>
+
+            <option value="group">
+              Student Group
+            </option>
+          </select>
+
+        </div>
+
+
+        <div
+          class="form-field full hidden"
+          id="studentField"
+        >
+
+          <label for="studentSelect">
+            Student
+          </label>
+
+          <select id="studentSelect" multiple multiple>
+            <option value="">
+              Loading students...
+            </option>
+          </select>
+
+        </div>
+
+
+        <div
+          class="form-field full hidden"
+          id="groupField"
+        >
+
+          <label for="groupSelect">
+            Student Group
+          </label>
+
+          <select id="groupSelect">
+
+            <option value="">
+              Select group
+            </option>
+
+            <option value="active">
+              Active Students
+            </option>
+
+            <option value="expiring">
+              Expiring Memberships
+            </option>
+
+            <option value="fee_overdue">
+              Fee Overdue
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="form-field">
+
+          <label for="notificationType">
+            Type
+          </label>
+
+          <select
+            id="notificationType"
+            required
+          >
+            <option value="general">General</option>
+            <option value="notice">Notice</option>
+            <option value="student">Student</option>
+            <option value="fee">Fee</option>
+            <option value="attendance">Attendance</option>
+            <option value="seat">Seat</option>
+            <option value="system">System</option>
+          </select>
+
+        </div>
+
+
+        <div class="form-field">
+
+          <label for="notificationPriority">
+            Priority
+          </label>
+
+          <select
+            id="notificationPriority"
+          >
+            <option value="normal">Normal</option>
+            <option value="high">Important</option>
+            <option value="urgent">Urgent</option>
+          </select>
+
+        </div>
+
+
+        <div class="form-field full">
+
+          <label for="notificationTitle">
+            Title
+          </label>
+
+          <input
+            type="text"
+            id="notificationTitle"
+            maxlength="120"
+            required
+            placeholder="Notification title"
+          >
+
+        </div>
+
+
+        <div class="form-field full">
+
+          <label for="notificationMessage">
+            Message
+          </label>
+
+          <textarea
+            id="notificationMessage"
+            rows="6"
+            maxlength="2000"
+            required
+            placeholder="Write your notification..."
+          ></textarea>
+
+          <small id="messageCount">
+            0 / 2000
+          </small>
+
+        </div>
+
+
+        <div class="form-field">
+
+          <label for="deliveryMode">
+            Delivery
+          </label>
+
+          <select id="deliveryMode">
+
+            <option value="now">
+              Send Now
+            </option>
+
+            <option value="scheduled">
+              Schedule
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div
+          class="form-field hidden"
+          id="scheduleField"
+        >
+
+          <label for="scheduledAt">
+            Schedule At
+          </label>
+
+          <input
+            type="datetime-local"
+            id="scheduledAt"
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="notification-preview">
+
+        <span>
+          PREVIEW
+        </span>
+
+        <div>
+
+          <strong id="previewTitle">
+            Notification title
+          </strong>
+
+          <p id="previewMessage">
+            Notification message
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="modal-footer">
+
+        <button
+          type="button"
+          class="secondary-btn"
+          data-close="createModal"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="primary-btn"
+          id="sendNotificationBtn"
+        >
+          Send Notification
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- ================= DETAIL MODAL ================= -->
+
+<div
+  class="modal-overlay hidden"
+  id="detailModal"
+>
+
+  <div class="modal">
+
+    <div class="modal-header">
+
+      <div>
+
+        <span class="eyebrow">
+          NOTIFICATION
+        </span>
+
+        <h2 id="detailTitle">
+          —
+        </h2>
+
+      </div>
+
+      <button
+        class="modal-close"
+        type="button"
+        data-close="detailModal"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div class="detail-content">
+
+      <div class="detail-badges">
+
+        <span id="detailType">
+          —
+        </span>
+
+        <span id="detailPriority">
+          —
+        </span>
+
+      </div>
+
+      <p id="detailMessage">
+        —
+      </p>
+
+      <div class="detail-grid">
+
+        <div>
+          <small>Received</small>
+          <strong id="detailDate">—</strong>
+        </div>
+
+        <div>
+          <small>Source</small>
+          <strong id="detailSource">—</strong>
+        </div>
+
+        <div>
+          <small>Reference</small>
+          <strong id="detailReference">—</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+
+      <button
+        type="button"
+        class="secondary-btn"
+        data-close="detailModal"
+      >
+        Close
+      </button>
+
+      <button
+        type="button"
+        class="primary-btn"
+        id="detailReadBtn"
+      >
+        Mark as Read
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div
+  id="toastContainer"
+  class="toast-container"
+  aria-live="polite"
+></div>
+
+
+<script src="../js/auth.js"></script>
+<script src="js/notifications.js"></script>
+
+</body>
+</html>

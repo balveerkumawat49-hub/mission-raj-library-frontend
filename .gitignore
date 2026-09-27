@@ -1,0 +1,9 @@
+.env
+.env.*
+node_modules/
+_backup_before_student_phase_removal/
+library-backend/
+*.bak
+*.bak2
+*.backup
+*.backup-*

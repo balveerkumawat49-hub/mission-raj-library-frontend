@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+
+  <title>Owner Dashboard | Mission Raj Library</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- IMPORTANT:
+       Existing project file name is onwer-dashboard.css -->
+  <link rel="stylesheet" href="css/onwer-dashboard.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+      <div class="brand-logo">MR</div>
+
+      <div class="brand-text">
+        <strong>Mission Raj</strong>
+        <span>Library</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section-title">
+      OVERVIEW
+    </div>
+
+    <nav class="navigation">
+
+      <a href="owner-dashboard.html"
+         class="nav-item active"
+         data-page="dashboard">
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="students.html"
+         class="nav-item"
+         data-page="students">
+        <span class="nav-icon">◉</span>
+        <span>Students</span>
+      </a>
+
+      <a href="seats.html"
+         class="nav-item"
+         data-page="seats">
+        <span class="nav-icon">▦</span>
+        <span>Seats</span>
+      </a>
+
+      <a href="memberships.html"
+         class="nav-item"
+         data-page="memberships">
+        <span class="nav-icon">◇</span>
+        <span>Memberships</span>
+      </a>
+
+      <a href="attendance.html"
+         class="nav-item"
+         data-page="attendance">
+        <span class="nav-icon">✓</span>
+        <span>Attendance</span>
+      </a>
+
+      <a href="payments.html"
+         class="nav-item"
+         data-page="payments">
+        <span class="nav-icon">₹</span>
+        <span>Fees & Payments</span>
+      </a>
+
+      <div class="sidebar-section-title second">
+        MANAGEMENT
+      </div>
+
+      <a href="notifications.html"
+         class="nav-item"
+         data-page="notifications">
+
+        <span class="nav-icon">○</span>
+        <span>Notifications</span>
+
+        <span class="nav-badge" id="notificationBadge">
+          0
+        </span>
+      </a>
+
+      <a href="#"
+         class="nav-item"
+         data-page="reports">
+
+        <span class="nav-icon">▥</span>
+        <span>Reports</span>
+      </a>
+
+      <a href="settings.html"
+         class="nav-item"
+         data-page="settings">
+
+        <span class="nav-icon">⚙</span>
+        <span>Settings</span>
+      </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+      <div class="location-box">
+        <span class="location-dot"></span>
+
+        <div>
+          <strong>Master Colony</strong>
+          <small>Kekri, Rajasthan</small>
+        </div>
+      </div>
+
+      <button
+        class="logout-btn"
+        id="logoutBtn"
+        type="button"
+      >
+        <span>↪</span>
+        Logout
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <button
+        class="mobile-menu"
+        id="mobileMenu"
+        type="button"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
+      <div class="page-title">
+        <span>OWNER PORTAL</span>
+        <h1>Dashboard</h1>
+      </div>
+
+      <div class="topbar-actions">
+
+        <button
+          class="icon-button notification-button"
+          id="notificationBtn"
+          type="button"
+          aria-label="Notifications"
+        >
+          ◌
+          <span class="notification-dot"></span>
+        </button>
+
+        <div class="owner-profile">
+
+          <div class="owner-avatar" id="ownerAvatar">
+            MR
+          </div>
+
+          <div class="owner-info">
+            <strong id="ownerName">
+              Library Owner
+            </strong>
+
+            <span id="ownerRole">
+              Administrator
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <div class="content">
+
+      <!-- WELCOME -->
+      <section class="welcome-row">
+
+        <div>
+          <h2 id="welcomeMessage">
+            Good evening
+          </h2>
+
+          <p>
+            Here's what's happening at Mission Raj Library today.
+          </p>
+        </div>
+
+        <div class="date-box">
+
+          <span>Today</span>
+
+          <strong id="currentDate">
+            Loading...
+          </strong>
+
+        </div>
+
+      </section>
+
+
+      <!-- STATS -->
+      <section class="stats-grid">
+
+        <article class="stat-card">
+
+          <div class="stat-top">
+            <div class="stat-icon blue">◉</div>
+
+            <span class="stat-label">
+              MEMBERS
+            </span>
+          </div>
+
+          <strong
+            class="stat-value"
+            id="totalMembers"
+          >
+            0
+          </strong>
+
+          <div class="stat-footer">
+            <span
+              class="positive"
+              id="newMembers"
+            >
+              0
+            </span>
+
+            <span>this month</span>
+          </div>
+
+          <div class="stat-footer">
+            <span
+              class="negative"
+              id="expiredMembers"
+            >
+              0
+            </span>
+
+            <span>expired</span>
+          </div>
+
+        </article>
+
+
+        <article class="stat-card">
+
+          <div class="stat-top">
+            <div class="stat-icon green">✓</div>
+
+            <span class="stat-label">
+              ACTIVE
+            </span>
+          </div>
+
+          <strong
+            class="stat-value"
+            id="activeMembers"
+          >
+            0
+          </strong>
+
+          <div class="stat-footer">
+
+            <span
+              class="positive"
+              id="activePercentage"
+            >
+              0%
+            </span>
+
+            <span>of members</span>
+
+          </div>
+
+        </article>
+
+
+        <article class="stat-card">
+
+          <div class="stat-top">
+            <div class="stat-icon orange">▦</div>
+
+            <span class="stat-label">
+              SEATS
+            </span>
+          </div>
+
+          <strong
+            class="stat-value"
+            id="seatSummary"
+          >
+            0 / 0
+          </strong>
+
+          <div class="stat-footer">
+
+            <span
+              class="positive"
+              id="seatPercentage"
+            >
+              0%
+            </span>
+
+            <span>occupied</span>
+
+          </div>
+
+        </article>
+
+
+        <article class="stat-card">
+
+          <div class="stat-top">
+            <div class="stat-icon purple">₹</div>
+
+            <span class="stat-label">
+              TODAY'S COLLECTION
+            </span>
+          </div>
+
+          <strong
+            class="stat-value"
+            id="todayCollection"
+          >
+            ₹0
+          </strong>
+
+          <div class="stat-footer">
+
+            <span
+              class="positive"
+              id="collectionChange"
+            >
+              —
+            </span>
+
+            <span>vs yesterday</span>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- SECOND ROW -->
+      <section class="dashboard-grid">
+
+        <!-- SEATS -->
+        <article class="panel occupancy-panel">
+
+          <div class="panel-header">
+
+            <div>
+              <h3>Seat occupancy</h3>
+              <p>Current library seating status</p>
+            </div>
+
+            <button
+              class="small-action"
+              type="button"
+              data-route="seats.html"
+            >
+              View seats →
+            </button>
+
+          </div>
+
+
+          <div class="occupancy-content">
+
+            <div class="occupancy-circle">
+
+              <div>
+                <strong id="occupancyPercentage">
+                  0%
+                </strong>
+
+                <span>Occupied</span>
+              </div>
+
+            </div>
+
+
+            <div class="occupancy-details">
+
+              <div class="legend-row">
+                <span>
+                  <i class="legend-dot occupied"></i>
+                  Occupied
+                </span>
+
+                <strong id="occupiedSeats">
+                  0
+                </strong>
+              </div>
+
+              <div class="legend-row">
+                <span>
+                  <i class="legend-dot available"></i>
+                  Available
+                </span>
+
+                <strong id="availableSeats">
+                  0
+                </strong>
+              </div>
+
+              <div class="legend-row">
+                <span>
+                  <i class="legend-dot reserved"></i>
+                  Reserved
+                </span>
+
+                <strong id="reservedSeats">
+                  0
+                </strong>
+              </div>
+
+              <div class="legend-row">
+                <span>
+                  <i class="legend-dot blocked"></i>
+                  Maintenance
+                </span>
+
+                <strong id="maintenanceSeats">
+                  0
+                </strong>
+              </div>
+
+              <div class="legend-row">
+                <span>
+                  <i class="legend-dot blocked"></i>
+                  Blocked
+                </span>
+
+                <strong id="blockedSeats">
+                  0
+                </strong>
+              </div>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- ATTENDANCE -->
+        <article class="panel">
+
+          <div class="panel-header">
+
+            <div>
+              <h3>Today's attendance</h3>
+              <p>Library visitors today</p>
+            </div>
+
+            <button
+              class="small-action"
+              type="button"
+              data-route="attendance.html"
+            >
+              View all →
+            </button>
+
+          </div>
+
+
+          <div class="attendance-summary">
+
+            <div class="attendance-number">
+
+              <strong id="todayCheckins">
+                0
+              </strong>
+
+              <span>
+                checked in today
+              </span>
+
+            </div>
+
+
+            <div class="attendance-mini">
+
+              <strong id="currentlyInside">
+                0
+              </strong>
+
+              <span>
+                currently inside
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="progress-bar">
+            <span
+              id="attendanceProgress"
+              style="width:0%"
+            ></span>
+          </div>
+
+
+          <div class="attendance-meta">
+
+            <span>Peak today</span>
+
+            <strong id="peakHours">
+              —
+            </strong>
+
+          </div>
+
+
+          <div class="attendance-meta">
+
+            <span>Post-expiry visits today</span>
+
+            <strong id="postExpiryVisits">
+              0
+            </strong>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- THIRD ROW -->
+      <section class="dashboard-grid">
+
+        <!-- PAYMENTS -->
+        <article class="panel">
+
+          <div class="panel-header">
+
+            <div>
+              <h3>Fees overview</h3>
+              <p>This month's financial summary</p>
+            </div>
+
+            <button
+              class="small-action"
+              type="button"
+              data-route="payments.html"
+            >
+              View payments →
+            </button>
+
+          </div>
+
+
+          <div class="finance-grid">
+
+            <div>
+              <span>Total collected</span>
+
+              <strong id="monthCollection">
+                ₹0
+              </strong>
+            </div>
+
+            <div>
+              <span>Pending</span>
+
+              <strong id="pendingFees">
+                ₹0
+              </strong>
+            </div>
+
+            <div>
+              <span>Renewals</span>
+
+              <strong id="renewalCollection">
+                ₹0
+              </strong>
+            </div>
+
+            <div>
+              <span>Payments</span>
+
+              <strong id="paymentCount">
+                0
+              </strong>
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- EXPIRING -->
+        <article class="panel">
+
+          <div class="panel-header">
+
+            <div>
+              <h3>Expiring soon</h3>
+              <p>Memberships ending in 7 days</p>
+            </div>
+
+            <button
+              class="small-action"
+              type="button"
+              data-route="memberships.html"
+            >
+              View all →
+            </button>
+
+          </div>
+
+
+          <div
+            class="expiry-list"
+            id="expiryList"
+          >
+
+            <div class="empty-state">
+              Loading memberships...
+            </div>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- QUICK ACTIONS -->
+      <section class="quick-section">
+
+        <div class="section-heading">
+
+          <div>
+            <h3>Quick actions</h3>
+            <p>Common library management tasks</p>
+          </div>
+
+        </div>
+
+
+        <div class="quick-grid">
+
+          <button
+            class="quick-card"
+            type="button"
+            data-route="students.html"
+          >
+
+            <span class="quick-icon blue">+</span>
+
+            <span>
+              <strong>Add student</strong>
+              <small>Create a new membership</small>
+            </span>
+
+            <b>→</b>
+
+          </button>
+
+
+          <button
+            class="quick-card"
+            type="button"
+            data-route="seats.html"
+          >
+
+            <span class="quick-icon green">▦</span>
+
+            <span>
+              <strong>Manage seats</strong>
+              <small>View and allot library seats</small>
+            </span>
+
+            <b>→</b>
+
+          </button>
+
+
+          <button
+            class="quick-card"
+            type="button"
+            data-route="payments.html"
+          >
+
+            <span class="quick-icon purple">₹</span>
+
+            <span>
+              <strong>Record payment</strong>
+              <small>Add a student payment</small>
+            </span>
+
+            <b>→</b>
+
+          </button>
+
+
+          <button
+            class="quick-card"
+            type="button"
+            data-route="students.html"
+          >
+
+            <span class="quick-icon orange">↻</span>
+
+            <span>
+              <strong>Renew membership</strong>
+              <small>Renew an existing member</small>
+            </span>
+
+            <b>→</b>
+
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- RECENT ACTIVITY -->
+      <section class="panel activity-panel">
+
+        <div class="panel-header">
+
+          <div>
+            <h3>Recent activity</h3>
+            <p>Latest activity across the library</p>
+          </div>
+
+          <button
+            class="small-action"
+            type="button"
+            id="activityHistoryBtn"
+            style="display:none;"
+          >
+            View history →
+          </button>
+
+        </div>
+
+
+        <div
+          class="activity-list"
+          id="activityList"
+        >
+
+          <div class="empty-state">
+            Loading activity...
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<div
+  class="sidebar-overlay"
+  id="sidebarOverlay"
+></div>
+
+
+<script src="js/onwer-dashboard.js"></script>
+
+<script src="js/notification-badge.js"></script>
+</body>
+</html>

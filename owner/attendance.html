@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Attendance | Mission Raj Library</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/attendance.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">MR</div>
+
+            <div class="brand-text">
+                <strong>Mission Raj</strong>
+                <span>Library Management</span>
+            </div>
+        </div>
+
+        <div class="sidebar-location">
+            Master Colony, Kekri
+        </div>
+
+        <nav class="navigation">
+
+            <div class="nav-section-title">MAIN</div>
+
+            <a href="owner-dashboard.html" class="nav-item">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="students.html" class="nav-item">
+                <span class="nav-icon">♙</span>
+                <span>Students</span>
+            </a>
+
+            <a href="seats.html" class="nav-item">
+                <span class="nav-icon">▦</span>
+                <span>Seats</span>
+            </a>
+
+            <a href="memberships.html" class="nav-item">
+                <span class="nav-icon">◇</span>
+                <span>Memberships</span>
+            </a>
+
+            <a href="attendance.html" class="nav-item active">
+                <span class="nav-icon">✓</span>
+                <span>Attendance</span>
+            </a>
+
+            <a href="payments.html" class="nav-item">
+                <span class="nav-icon">₹</span>
+                <span>Fees & Payments</span>
+            </a>
+
+            <div class="nav-section-title">MANAGEMENT</div>
+
+            <a href="notifications.html" class="nav-item">
+                <span class="nav-icon">◉</span>
+                <span>Notifications</span>
+
+                <span
+                    class="notification-badge"
+                    id="notificationBadge"
+                >
+                    0
+                </span>
+            </a>
+
+            <a href="settings.html" class="nav-item">
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+
+            <div class="portal-label">
+                OWNER PORTAL
+            </div>
+
+            <button
+                type="button"
+                class="logout-btn"
+                id="logoutBtn"
+            >
+                <span>↪</span>
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="mobile-menu-btn"
+                    id="mobileMenuBtn"
+                >
+                    ☰
+                </button>
+
+                <div>
+                    <div class="page-eyebrow">
+                        OWNER PORTAL
+                    </div>
+
+                    <h1>Attendance</h1>
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    type="button"
+                    class="icon-btn"
+                    id="notificationBtn"
+                >
+                    ◉
+
+                    <span
+                        class="notification-dot"
+                        id="notificationDot"
+                    ></span>
+                </button>
+
+                <div class="owner-profile">
+
+                    <div
+                        class="owner-avatar"
+                        id="ownerAvatar"
+                    >
+                        O
+                    </div>
+
+                    <div class="owner-info">
+
+                        <strong id="ownerName">
+                            Owner
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="page-content">
+
+            <!-- PAGE HEADER -->
+            <div class="page-header">
+
+                <div>
+
+                    <div class="breadcrumb">
+                        Owner / Attendance
+                    </div>
+
+                    <h2>
+                        Attendance Management
+                    </h2>
+
+                    <p>
+                        Monitor check-ins, check-outs and study duration.
+                    </p>
+
+                </div>
+
+                <div class="page-actions">
+
+                    <button
+                        type="button"
+                        class="primary-btn"
+                        id="checkInBtn"
+                    >
+                        +
+                        Check In
+                    </button>
+
+                    <button
+                        type="button"
+                        class="secondary-btn"
+                        id="refreshBtn"
+                    >
+                        ↻
+                        Refresh
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- STATS -->
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon total">
+                        ✓
+                    </div>
+
+                    <div>
+                        <span>Today's Check-ins</span>
+                        <strong id="todayCheckIns">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon inside">
+                        ●
+                    </div>
+
+                    <div>
+                        <span>Currently Inside</span>
+                        <strong id="currentlyInside">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon checkout">
+                        ↪
+                    </div>
+
+                    <div>
+                        <span>Checked Out</span>
+                        <strong id="todayCheckOuts">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon duration">
+                        ◷
+                    </div>
+
+                    <div>
+                        <span>Average Study Time</span>
+                        <strong id="averageDuration">—</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- CONTROLS -->
+            <section class="toolbar-card">
+
+                <div class="search-box">
+
+                    <span class="search-icon">⌕</span>
+
+                    <input
+                        type="search"
+                        id="attendanceSearch"
+                        placeholder="Search student, ID or seat..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <div class="date-control">
+
+                        <label for="attendanceDate">
+                            Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="attendanceDate"
+                        >
+
+                    </div>
+
+
+                    <select id="statusFilter">
+
+                        <option value="all">
+                            All Status
+                        </option>
+
+                        <option value="inside">
+                            Currently Inside
+                        </option>
+
+                        <option value="checked_out">
+                            Checked Out
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </section>
+
+
+            <!-- ERROR -->
+            <div
+                class="alert-box"
+                id="apiError"
+                style="display:none;"
+            >
+
+                <strong>
+                    Unable to load attendance
+                </strong>
+
+                <span id="apiErrorMessage">
+                    Please try again.
+                </span>
+
+                <button
+                    type="button"
+                    id="retryBtn"
+                >
+                    Retry
+                </button>
+
+            </div>
+
+
+            <!-- TABLE -->
+            <section class="attendance-section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h3>
+                            Attendance Records
+                        </h3>
+
+                        <span id="recordCount">
+                            0 records
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="selected-date-label"
+                        id="selectedDateLabel"
+                    >
+                        —
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="loading-state"
+                    id="loadingState"
+                >
+
+                    <div class="loading-spinner"></div>
+
+                    <span>
+                        Loading attendance records...
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="table-wrapper"
+                    id="tableWrapper"
+                    style="display:none;"
+                >
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Student</th>
+                                <th>Seat</th>
+                                <th>Check-in</th>
+                                <th>Check-out</th>
+                                <th>Duration</th>
+                                <th>Membership</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="attendanceTableBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div
+                    class="empty-state"
+                    id="emptyState"
+                    style="display:none;"
+                >
+
+                    <div class="empty-icon">
+                        ✓
+                    </div>
+
+                    <h3>
+                        No attendance records
+                    </h3>
+
+                    <p>
+                        No attendance activity was found for the selected date.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ATTENDANCE DETAIL MODAL -->
+<div
+    class="modal-backdrop"
+    id="attendanceDetailModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <div class="modal-eyebrow">
+                    ATTENDANCE RECORD
+                </div>
+
+                <h2 id="detailStudentName">
+                    Student
+                </h2>
+
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeDetailModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="detail-body">
+
+            <div class="detail-student">
+
+                <div
+                    class="detail-avatar"
+                    id="detailAvatar"
+                >
+                    S
+                </div>
+
+                <div>
+
+                    <strong id="detailStudentId">
+                        —
+                    </strong>
+
+                    <span id="detailStudentMobile">
+                        —
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-grid">
+
+                <div class="detail-item">
+                    <span>Date</span>
+                    <strong id="detailDate">—</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Seat</span>
+                    <strong id="detailSeat">—</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Check-in</span>
+                    <strong id="detailCheckIn">—</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Check-out</span>
+                    <strong id="detailCheckOut">—</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Duration</span>
+                    <strong id="detailDuration">—</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Membership</span>
+                    <strong id="detailMembership">—</strong>
+                </div>
+
+            </div>
+
+
+            <div
+                class="expiry-warning"
+                id="expiryWarning"
+                style="display:none;"
+            >
+                This visit was recorded after the membership validity ended.
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="secondary-btn"
+                id="closeDetailBtn"
+            >
+                Close
+            </button>
+
+            <button
+                type="button"
+                class="danger-btn"
+                id="modalCheckoutBtn"
+                style="display:none;"
+            >
+                Check Out
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- CHECKOUT CONFIRMATION -->
+<div
+    class="modal-backdrop"
+    id="checkoutModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal small-modal"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <div class="modal-eyebrow">
+                    MANUAL CHECK-OUT
+                </div>
+
+                <h2>
+                    Confirm Check-out
+                </h2>
+
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeCheckoutModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="confirm-body">
+
+            <p id="checkoutMessage">
+                Are you sure you want to check out this student?
+            </p>
+
+            <div class="checkout-time">
+
+                <span>
+                    Check-out time
+                </span>
+
+                <strong id="checkoutCurrentTime">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="secondary-btn"
+                id="cancelCheckoutBtn"
+            >
+                Cancel
+            </button>
+
+            <button
+                type="button"
+                class="danger-btn"
+                id="confirmCheckoutBtn"
+            >
+                Confirm Check-out
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- CHECK-IN MODAL -->
+<div
+    class="modal-backdrop"
+    id="checkInModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal small-modal"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <div class="modal-eyebrow">
+                    MANUAL CHECK-IN
+                </div>
+
+                <h2>
+                    Check In Student
+                </h2>
+
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeCheckInModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="confirm-body">
+
+            <p>
+                Select a student to record their check-in now.
+                Membership status does not block a visit — a
+                post-expiry visit will still be recorded and
+                clearly marked.
+            </p>
+
+            <div class="field-group">
+
+                <label for="checkInStudentSelect">
+                    Student
+                </label>
+
+                <select id="checkInStudentSelect">
+                    <option value="">Select student</option>
+                </select>
+
+            </div>
+
+            <p
+                class="field-error hidden"
+                id="checkInError"
+            ></p>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="secondary-btn"
+                id="cancelCheckInBtn"
+            >
+                Cancel
+            </button>
+
+            <button
+                type="button"
+                class="primary-btn"
+                id="confirmCheckInBtn"
+            >
+                Confirm Check-in
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+<div
+    class="toast"
+    id="toast"
+>
+    <span id="toastMessage"></span>
+</div>
+
+
+<script src="js/attendance.js"></script>
+
+<script src="js/notification-badge.js"></script>
+</body>
+</html>

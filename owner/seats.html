@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Seats | Mission Raj Library</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/seats.css"
+    >
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">MR</div>
+
+            <div class="brand-text">
+                <strong>Mission Raj</strong>
+                <span>Library Management</span>
+            </div>
+        </div>
+
+        <div class="sidebar-location">
+            Master Colony, Kekri
+        </div>
+
+        <nav class="navigation">
+
+            <div class="nav-section-title">
+                MAIN
+            </div>
+
+            <a
+                href="owner-dashboard.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a
+                href="students.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">♙</span>
+                <span>Students</span>
+            </a>
+
+            <a
+                href="seats.html"
+                class="nav-item active"
+            >
+                <span class="nav-icon">▦</span>
+                <span>Seats</span>
+            </a>
+
+            <a
+                href="memberships.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">◇</span>
+                <span>Memberships</span>
+            </a>
+
+            <a
+                href="attendance.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">✓</span>
+                <span>Attendance</span>
+            </a>
+
+            <a
+                href="payments.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">₹</span>
+                <span>Fees & Payments</span>
+            </a>
+
+            <div class="nav-section-title">
+                MANAGEMENT
+            </div>
+
+            <a
+                href="notifications.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">◉</span>
+                <span>Notifications</span>
+
+                <span
+                    class="notification-badge"
+                    id="notificationBadge"
+                >
+                    0
+                </span>
+            </a>
+
+            <a
+                href="settings.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+
+            <div class="portal-label">
+                OWNER PORTAL
+            </div>
+
+            <button
+                type="button"
+                class="logout-btn"
+                id="logoutBtn"
+            >
+                <span>↪</span>
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- SIDEBAR OVERLAY -->
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="mobile-menu-btn"
+                    id="mobileMenuBtn"
+                >
+                    ☰
+                </button>
+
+                <div>
+
+                    <div class="page-eyebrow">
+                        OWNER PORTAL
+                    </div>
+
+                    <h1>
+                        Seats
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    type="button"
+                    class="icon-btn"
+                    id="notificationBtn"
+                >
+                    ◉
+
+                    <span
+                        class="notification-dot"
+                        id="notificationDot"
+                    ></span>
+                </button>
+
+
+                <div class="owner-profile">
+
+                    <div
+                        class="owner-avatar"
+                        id="ownerAvatar"
+                    >
+                        O
+                    </div>
+
+                    <div class="owner-info">
+
+                        <strong id="ownerName">
+                            Owner
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="page-content">
+
+            <!-- PAGE HEADER -->
+            <div class="page-header">
+
+                <div>
+
+                    <div class="breadcrumb">
+                        Owner / Seats
+                    </div>
+
+                    <h2>
+                        Seat Management
+                    </h2>
+
+                    <p>
+                        Manage library seating, allocations and seat availability.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="primary-btn"
+                    id="addSeatBtn"
+                >
+                    <span>+</span>
+                    Add Seat
+                </button>
+<a href="seat-chart.html" class="btn btn-primary">
+    Seat Chart
+</a>
+            </div>
+
+
+            <!-- STATS -->
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon total">
+                        ▦
+                    </div>
+
+                    <div>
+                        <span>
+                            Total Seats
+                        </span>
+
+                        <strong id="totalSeats">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon available">
+                        ✓
+                    </div>
+
+                    <div>
+                        <span>
+                            Available
+                        </span>
+
+                        <strong id="availableSeats">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon occupied">
+                        ●
+                    </div>
+
+                    <div>
+                        <span>
+                            Occupied
+                        </span>
+
+                        <strong id="occupiedSeats">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blocked">
+                        !
+                    </div>
+
+                    <div>
+                        <span>
+                            Blocked / Maintenance
+                        </span>
+
+                        <strong id="blockedSeats">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- TOOLBAR -->
+            <section class="toolbar-card">
+
+                <div class="search-box">
+
+                    <span class="search-icon">
+                        ⌕
+                    </span>
+
+                    <input
+                        type="search"
+                        id="seatSearch"
+                        placeholder="Search seat number or student..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <select id="statusFilter">
+
+                        <option value="all">
+                            All Status
+                        </option>
+
+                        <option value="available">
+                            Available
+                        </option>
+
+                        <option value="occupied">
+                            Occupied
+                        </option>
+
+                        <option value="reserved">
+                            Reserved
+                        </option>
+
+                        <option value="maintenance">
+                            Maintenance
+                        </option>
+
+                        <option value="blocked">
+                            Blocked
+                        </option>
+
+                    </select>
+
+
+                    <select id="floorFilter">
+
+                        <option value="all">
+                            All Floors
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </section>
+
+
+            <!-- API ERROR -->
+            <div
+                class="alert-box"
+                id="apiError"
+                style="display:none;"
+            >
+                <strong>
+                    Unable to load seats
+                </strong>
+
+                <span id="apiErrorMessage">
+                    Please try again.
+                </span>
+
+                <button
+                    type="button"
+                    id="retryBtn"
+                >
+                    Retry
+                </button>
+            </div>
+
+
+            <!-- LOADING -->
+            <div
+                class="loading-card"
+                id="loadingState"
+            >
+
+                <div class="loading-spinner"></div>
+
+                <span>
+                    Loading seats...
+                </span>
+
+            </div>
+
+
+            <!-- SEAT GRID -->
+            <section
+                class="seat-section"
+                id="seatSection"
+                style="display:none;"
+            >
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h3>
+                            Library Seating
+                        </h3>
+
+                        <span id="seatResultCount">
+                            0 seats
+                        </span>
+
+                    </div>
+
+
+                    <div class="legend">
+
+                        <span>
+                            <i class="legend-dot available"></i>
+                            Available
+                        </span>
+
+                        <span>
+                            <i class="legend-dot occupied"></i>
+                            Occupied
+                        </span>
+
+                        <span>
+                            <i class="legend-dot reserved"></i>
+                            Reserved
+                        </span>
+
+                        <span>
+                            <i class="legend-dot maintenance"></i>
+                            Maintenance
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="seat-grid"
+                    id="seatGrid"
+                ></div>
+
+
+                <div
+                    class="empty-state"
+                    id="emptyState"
+                    style="display:none;"
+                >
+
+                    <div class="empty-icon">
+                        ▦
+                    </div>
+
+                    <h3>
+                        No seats found
+                    </h3>
+
+                    <p>
+                        No seat matches the current search or filter.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- SEAT MODAL -->
+<div
+    class="modal-backdrop"
+    id="seatModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <div class="modal-eyebrow">
+                    SEAT MANAGEMENT
+                </div>
+
+                <h2 id="seatModalTitle">
+                    Add Seat
+                </h2>
+
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeSeatModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="seatForm">
+
+            <div class="form-body">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="seatNumber">
+                            Seat Number
+                        </label>
+
+                        <input
+                            type="text"
+                            id="seatNumber"
+                            placeholder="Example: A-01"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="seatFloor">
+                            Floor
+                        </label>
+
+                        <input
+                            type="text"
+                            id="seatFloor"
+                            placeholder="Example: Ground Floor"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="seatZone">
+                            Zone / Section
+                        </label>
+
+                        <input
+                            type="text"
+                            id="seatZone"
+                            placeholder="Example: Main Hall"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="seatStatus">
+                            Status
+                        </label>
+
+                        <select id="seatStatus">
+
+                            <option value="available">
+                                Available
+                            </option>
+
+                            <option value="maintenance">
+                                Maintenance
+                            </option>
+
+                            <option value="blocked">
+                                Blocked
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="seatNotes">
+                            Notes
+                        </label>
+
+                        <textarea
+                            id="seatNotes"
+                            rows="3"
+                            placeholder="Optional seat notes..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="form-error"
+                    id="seatFormError"
+                ></div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    id="cancelSeatBtn"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                    id="saveSeatBtn"
+                >
+                    Save Seat
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ALLOCATION MODAL -->
+<div
+    class="modal-backdrop"
+    id="allocationModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal allocation-modal"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <div class="modal-eyebrow">
+                    SEAT ALLOCATION
+                </div>
+
+                <h2>
+                    Allocate Seat
+                </h2>
+
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeAllocationModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="allocationForm">
+
+            <div class="form-body">
+
+                <div class="selected-seat-box">
+
+                    <span>
+                        Selected Seat
+                    </span>
+
+                    <strong id="allocationSeatName">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="studentSelect">
+                        Student
+                    </label>
+
+                    <select
+                        id="studentSelect"
+                        required
+                    >
+
+                        <option value="">
+                            Select student
+                        </option>
+
+                    </select>
+
+                    <small>
+                        Only active students are shown.
+                    </small>
+
+                </div>
+
+
+                <div
+                    class="form-error"
+                    id="allocationError"
+                ></div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    id="cancelAllocationBtn"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                    id="allocateBtn"
+                >
+                    Allocate Seat
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- DETAIL MODAL -->
+<div
+    class="modal-backdrop"
+    id="detailModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <div class="modal-eyebrow">
+                    SEAT DETAILS
+                </div>
+
+                <h2 id="detailSeatTitle">
+                    Seat
+                </h2>
+
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeDetailModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="seat-detail-body">
+
+            <div class="detail-status-row">
+
+                <span>
+                    Status
+                </span>
+
+                <strong id="detailSeatStatus">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="detail-status-row">
+
+                <span>
+                    Floor
+                </span>
+
+                <strong id="detailSeatFloor">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="detail-status-row">
+
+                <span>
+                    Zone
+                </span>
+
+                <strong id="detailSeatZone">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="detail-status-row">
+
+                <span>
+                    Student
+                </span>
+
+                <strong id="detailSeatStudent">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="detail-status-row">
+
+                <span>
+                    Allocated Since
+                </span>
+
+                <strong id="detailSeatAllocated">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div
+                class="detail-notes"
+                id="detailSeatNotes"
+            >
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="secondary-btn"
+                id="closeDetailBtn"
+            >
+                Close
+            </button>
+
+            <button
+                type="button"
+                class="primary-btn"
+                id="detailActionBtn"
+            >
+                Action
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+<div
+    class="toast"
+    id="toast"
+>
+    <span id="toastMessage"></span>
+</div>
+
+
+<script src="js/seats.js"></script>
+
+<script src="js/notification-badge.js"></script>
+</body>
+</html>
