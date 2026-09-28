@@ -1093,7 +1093,7 @@ function renderChart() {
     );
 
     const roomHeight = Math.max(
-        850,
+        1100,
         maxY + 150
     );
 
