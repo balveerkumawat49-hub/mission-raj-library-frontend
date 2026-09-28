@@ -507,7 +507,7 @@ a {
     content: "";
     display: block;
     width: var(--seat-room-width, 1100px);
-    height: var(--seat-room-height, 850px);
+    height: var(--seat-room-height, 1100px);
     flex: 0 0 auto;
     pointer-events: none;
 }

@@ -607,7 +607,9 @@ function applyFilters() {
 
             const matchesStatus =
                 status === "all" ||
-                student.status === status;
+                (status === "pending"
+                    ? Number(student.pendingFee || 0) > 0
+                    : student.status === status);
 
 
             const matchesMembership =
