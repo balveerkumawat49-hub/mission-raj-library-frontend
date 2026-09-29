@@ -1133,7 +1133,7 @@ a {
 }
 
 /* MISSION RAJ SIDEBAR STANDARDIZATION V1 */
-@media (min-width: 821px) {
+
   .sidebar {
     width: 248px;
     background: #111827;
@@ -1273,4 +1273,3 @@ a {
     background: rgba(255,255,255,0.09);
     color: #fff;
   }
-}
