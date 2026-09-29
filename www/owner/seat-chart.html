@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Seat Chart | Mission Raj Library</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/seat-chart.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="owner-sidebar" id="ownerSidebar">
+
+        <div class="brand">
+            <div class="brand-mark">MR</div>
+
+            <div>
+                <strong>Mission Raj</strong>
+                <span>Library</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="owner-dashboard.html">
+                <span>Dashboard</span>
+            </a>
+
+            <a href="students.html">
+                <span>Students</span>
+            </a>
+
+            <a href="seats.html" class="active">
+                <span>Seats</span>
+            </a>
+
+            <a href="memberships.html">
+                <span>Memberships</span>
+            </a>
+
+            <a href="attendance.html">
+                <span>Attendance</span>
+            </a>
+
+            <a href="payments.html">
+                <span>Fees & Payments</span>
+            </a>
+
+            <a href="notifications.html">
+                <span>Notifications</span>
+            </a>
+
+            <a href="settings.html">
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="location-label">
+                Master Colony, Kekri
+            </div>
+
+            <button type="button" id="logoutBtn" class="logout-btn">
+                Logout
+            </button>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <button
+                type="button"
+                class="mobile-menu-btn"
+                id="mobileMenuBtn"
+                aria-label="Open menu">
+                ☰
+            </button>
+
+            <div class="topbar-left">
+                <span class="portal-label">OWNER PORTAL</span>
+            </div>
+
+            <div class="owner-mini-profile">
+                <div class="owner-avatar" id="ownerAvatar">O</div>
+
+                <div class="owner-mini-info">
+                    <strong id="ownerName">Owner</strong>
+                    <span>Administrator</span>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- PAGE HEADER -->
+        <section class="page-header">
+
+            <div>
+                <div class="breadcrumb">
+                    <a href="seats.html">Seats</a>
+                    <span>/</span>
+                    <span>Seat Chart</span>
+                </div>
+
+                <h1>Seat Chart</h1>
+
+                <p>
+                    Live visual layout of the library seating area.
+                </p>
+            </div>
+
+            <div class="page-actions">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    id="backToSeatsBtn">
+                    Back to Seats
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="editLayoutBtn">
+                    Edit Layout
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATS -->
+        <section class="chart-stats">
+
+            <div class="stat-card">
+                <span>Total Seats</span>
+                <strong id="totalSeats">0</strong>
+            </div>
+
+            <div class="stat-card available">
+                <span>Available</span>
+                <strong id="availableSeats">0</strong>
+            </div>
+
+            <div class="stat-card occupied">
+                <span>Occupied</span>
+                <strong id="occupiedSeats">0</strong>
+            </div>
+
+            <div class="stat-card reserved">
+                <span>Reserved</span>
+                <strong id="reservedSeats">0</strong>
+            </div>
+
+            <div class="stat-card maintenance">
+                <span>Maintenance</span>
+                <strong id="maintenanceSeats">0</strong>
+            </div>
+
+            <div class="stat-card blocked">
+                <span>Blocked</span>
+                <strong id="blockedSeats">0</strong>
+            </div>
+
+        </section>
+
+
+        <!-- TOOLBAR -->
+        <section class="chart-toolbar">
+
+            <div class="toolbar-left">
+
+                <label>
+                    Floor
+                    <select id="floorFilter">
+                        <option value="all">All Floors</option>
+                    </select>
+                </label>
+
+                <label>
+                    Room
+                    <select id="roomFilter">
+                        <option value="all">All Rooms</option>
+                    </select>
+                </label>
+
+                <label>
+                    Status
+                    <select id="statusFilter">
+                        <option value="all">All Status</option>
+                        <option value="available">Available</option>
+                        <option value="occupied">Occupied</option>
+                        <option value="reserved">Reserved</option>
+                        <option value="maintenance">Maintenance</option>
+                        <option value="blocked">Blocked</option>
+                    </select>
+                </label>
+
+            </div>
+
+            <div class="legend">
+
+                <span>
+                    <i class="legend-dot available-dot"></i>
+                    Available
+                </span>
+
+                <span>
+                    <i class="legend-dot occupied-dot"></i>
+                    Occupied
+                </span>
+
+                <span>
+                    <i class="legend-dot reserved-dot"></i>
+                    Reserved
+                </span>
+
+                <span>
+                    <i class="legend-dot maintenance-dot"></i>
+                    Maintenance
+                </span>
+
+                <span>
+                    <i class="legend-dot blocked-dot"></i>
+                    Blocked
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- WORKSPACE -->
+        <section class="chart-workspace">
+
+            <!-- CHART -->
+            <div class="chart-card">
+
+                <div class="chart-card-header">
+
+                    <div>
+                        <strong id="chartRoomTitle">
+                            Library Seating Area
+                        </strong>
+
+                        <span id="chartRoomSubtitle">
+                            Seat layout
+                        </span>
+                    </div>
+
+                    <span
+                        class="edit-mode-badge"
+                        id="editModeBadge">
+                        View Mode
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="seat-canvas"
+                    id="seatCanvas">
+
+                    <div class="empty-chart" id="emptyChart">
+                        <div class="empty-icon">□</div>
+
+                        <strong id="emptyChartTitle">No seats found</strong>
+
+                        <p id="emptyChartMessage">
+                            Add seats from the Seats page to build your layout.
+                        </p>
+
+                        <a href="seats.html" class="btn btn-primary">
+                            Manage Seats
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DETAILS PANEL -->
+            <aside class="seat-details" id="seatDetails">
+
+                <div class="details-empty" id="detailsEmpty">
+
+                    <div class="details-icon">⌖</div>
+
+                    <strong>Select a seat</strong>
+
+                    <p>
+                        Click any seat on the chart to view its current data.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="details-content hidden"
+                    id="detailsContent">
+
+                    <div class="details-header">
+
+                        <div>
+                            <span class="details-label">
+                                SELECTED SEAT
+                            </span>
+
+                            <h2 id="detailSeatNumber">A1</h2>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="close-details"
+                            id="closeDetailsBtn">
+                            ×
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="seat-status-large"
+                        id="detailStatus">
+                        Available
+                    </div>
+
+
+                    <div class="details-section">
+
+                        <h3>Seat Information</h3>
+
+                        <div class="detail-row">
+                            <span>Seat</span>
+                            <strong id="detailSeatName">—</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Room</span>
+                            <strong id="detailRoom">—</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Floor</span>
+                            <strong id="detailFloor">—</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Section</span>
+                            <strong id="detailSection">—</strong>
+                        </div>
+
+                    </div>
+
+
+                    <!-- OCCUPANT -->
+                    <div
+                        class="details-section"
+                        id="occupantSection">
+
+                        <h3>Current Occupant</h3>
+
+                        <div class="occupant-card">
+
+                            <div class="occupant-avatar" id="occupantAvatar">
+                                —
+                            </div>
+
+                            <div class="occupant-info">
+
+                                <strong id="occupantName">
+                                    No student
+                                </strong>
+
+                                <span id="occupantStudentId">
+                                    —
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail-row">
+                            <span>Mobile</span>
+                            <strong id="occupantMobile">—</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Membership</span>
+                            <strong id="occupantMembership">—</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Validity</span>
+                            <strong id="occupantValidity">—</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Check-in</span>
+                            <strong id="occupantCheckIn">—</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Study Duration</span>
+                            <strong id="occupantDuration">—</strong>
+                        </div>
+
+                    </div>
+
+
+                    <!-- BLOCK REASON -->
+                    <div
+                        class="details-section hidden"
+                        id="blockSection">
+
+                        <h3>Maintenance</h3>
+
+                        <div class="block-message" id="blockReason">
+                            No reason provided.
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACTIONS -->
+                    <div class="detail-actions">
+
+                        <button
+                            type="button"
+                            class="btn btn-secondary full-width"
+                            id="editSeatBtn">
+                            Edit Seat
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn btn-primary full-width hidden"
+                            id="assignSeatBtn">
+                            Assign Seat
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn btn-danger full-width hidden"
+                            id="releaseSeatBtn">
+                            Release Seat
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- EDIT SEAT MODAL -->
+<div class="modal-backdrop hidden" id="seatModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+                <span class="details-label">SEAT MANAGEMENT</span>
+                <h2 id="modalTitle">Edit Seat</h2>
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="modalCloseBtn">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="seatForm">
+
+            <input type="hidden" id="seatId">
+
+            <div class="form-grid">
+
+                <label>
+                    Seat Number
+                    <input
+                        type="text"
+                        id="seatNumber"
+                        maxlength="30"
+                        placeholder="A1"
+                        required>
+                </label>
+
+                <label>
+                    Seat Name
+                    <input
+                        type="text"
+                        id="seatName"
+                        maxlength="80"
+                        placeholder="Window Seat 1">
+                </label>
+
+                <label>
+                    Floor
+                    <input
+                        type="text"
+                        id="seatFloor"
+                        maxlength="50"
+                        placeholder="Floor 1">
+                </label>
+
+                <label>
+                    Room
+                    <input
+                        type="text"
+                        id="seatRoom"
+                        maxlength="80"
+                        placeholder="Study Room A">
+                </label>
+
+                <label>
+                    Section
+                    <input
+                        type="text"
+                        id="seatSection"
+                        maxlength="80"
+                        placeholder="Main Hall">
+                </label>
+
+                <label>
+                    Status
+                    <select id="seatStatus">
+
+                        <option value="available">
+                            Available
+                        </option>
+
+                        <option value="maintenance">
+                            Maintenance
+                        </option>
+
+                        <option value="blocked">
+                            Blocked
+                        </option>
+
+                    </select>
+                </label>
+
+            </div>
+
+
+            <label class="full-field">
+                Maintenance / Block Reason
+                <textarea
+                    id="seatBlockReason"
+                    rows="3"
+                    placeholder="Only required for blocked seats."></textarea>
+            </label>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    id="cancelModalBtn">
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary">
+                    Save Seat
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ALLOCATE SEAT MODAL -->
+<div class="modal-backdrop hidden" id="allocationModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+                <h2>Assign Seat</h2>
+                <p id="allocationSeatName" class="modal-subtitle">—</p>
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeAllocationModal">
+                ×
+            </button>
+
+        </div>
+
+        <form id="allocationForm">
+
+            <div class="form-grid">
+
+                <label class="form-group full">
+                    Student
+                    <select id="allocationStudentSelect" required>
+                        <option value="">Select student</option>
+                    </select>
+                </label>
+
+            </div>
+
+            <p
+                class="form-error hidden"
+                id="allocationError">
+            </p>
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    id="cancelAllocationBtn">
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    id="confirmAllocationBtn">
+                    Allocate Seat
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+<div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite">
+</div>
+
+
+<script src="js/seat-chart.js"></script>
+
+<script src="js/notification-badge.js"></script>
+</body>
+</html>

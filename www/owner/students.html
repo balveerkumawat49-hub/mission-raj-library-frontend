@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Students | Mission Raj Library</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/students.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">MR</div>
+
+            <div class="brand-text">
+                <strong>Mission Raj</strong>
+                <span>Library Management</span>
+            </div>
+        </div>
+
+        <div class="sidebar-location">
+            <span>Master Colony, Kekri</span>
+        </div>
+
+        <nav class="navigation">
+
+            <div class="nav-section-title">MAIN</div>
+
+            <a href="owner-dashboard.html" class="nav-item">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="students.html" class="nav-item active">
+                <span class="nav-icon">♙</span>
+                <span>Students</span>
+            </a>
+
+            <a href="seats.html" class="nav-item">
+                <span class="nav-icon">▦</span>
+                <span>Seats</span>
+            </a>
+
+            <a href="memberships.html" class="nav-item">
+                <span class="nav-icon">◇</span>
+                <span>Memberships</span>
+            </a>
+
+            <a href="attendance.html" class="nav-item">
+                <span class="nav-icon">✓</span>
+                <span>Attendance</span>
+            </a>
+
+            <a href="payments.html" class="nav-item">
+                <span class="nav-icon">₹</span>
+                <span>Fees & Payments</span>
+            </a>
+
+            <div class="nav-section-title">MANAGEMENT</div>
+
+            <a href="notifications.html" class="nav-item">
+                <span class="nav-icon">◉</span>
+                <span>Notifications</span>
+                <span class="notification-badge" id="notificationBadge">0</span>
+            </a>
+
+            <a href="settings.html" class="nav-item">
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="portal-label">OWNER PORTAL</div>
+
+            <button
+                type="button"
+                class="logout-btn"
+                id="logoutBtn"
+            >
+                <span>↪</span>
+                Logout
+            </button>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="mobile-menu-btn"
+                    id="mobileMenuBtn"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+                <div>
+                    <div class="page-eyebrow">OWNER PORTAL</div>
+                    <h1>Students</h1>
+                </div>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <button
+                    type="button"
+                    class="icon-btn"
+                    id="notificationBtn"
+                    title="Notifications"
+                >
+                    ◉
+                    <span
+                        class="notification-dot"
+                        id="notificationDot"
+                    ></span>
+                </button>
+
+                <div class="owner-profile">
+                    <div class="owner-avatar" id="ownerAvatar">O</div>
+
+                    <div class="owner-info">
+                        <strong id="ownerName">Owner</strong>
+                        <span>Administrator</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- PAGE -->
+        <section class="page-content">
+
+            <!-- PAGE HEADER -->
+            <div class="page-header">
+
+                <div>
+                    <h2>Student Management</h2>
+                    <p>
+                        Manage admissions, memberships, seats and student records.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="primary-btn"
+                    id="addStudentBtn"
+                >
+                    <span>+</span>
+                    Add Student
+                </button>
+
+            </div>
+
+
+            <!-- STATS -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-label">Total Students</div>
+                    <div class="stat-value" id="totalStudents">—</div>
+                    <div class="stat-meta">All registered students</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-label">Active</div>
+                    <div class="stat-value" id="activeStudents">—</div>
+                    <div class="stat-meta">Currently active memberships</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-label">Expired</div>
+                    <div class="stat-value" id="expiredStudents">—</div>
+                    <div class="stat-meta">Membership expired</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-label">Pending Fees</div>
+                    <div class="stat-value" id="pendingFees">—</div>
+                    <div class="stat-meta">Outstanding student fees</div>
+                </div>
+
+            </div>
+
+
+            <!-- STUDENTS PANEL -->
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h3>All Students</h3>
+                        <span id="resultCount">Loading students...</span>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="refresh-btn"
+                        id="refreshBtn"
+                    >
+                        ↻ Refresh
+                    </button>
+
+                </div>
+
+
+                <!-- FILTERS -->
+                <div class="filters">
+
+                    <div class="search-box">
+
+                        <span class="search-icon">⌕</span>
+
+                        <input
+                            type="search"
+                            id="studentSearch"
+                            placeholder="Search name, mobile or student ID..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+                    <select id="statusFilter">
+                        <option value="all">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="expired">Expired</option>
+                        <option value="pending">Pending</option>
+                    </select>
+
+                    <select id="membershipFilter">
+                        <option value="all">All Memberships</option>
+                    </select>
+
+                </div>
+
+
+                <!-- TABLE -->
+                <div class="table-wrapper">
+
+                    <table class="students-table">
+
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Student ID</th>
+                                <th>Mobile</th>
+                                <th>Login ID</th>
+                                <th>Password</th>
+                                <th>Membership</th>
+                                <th>Seat</th>
+                                <th>Validity</th>
+                                <th>Fee Status</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="studentsTableBody">
+
+                            <tr>
+                                <td
+                                    colspan="11"
+                                    class="table-state"
+                                >
+                                    <div class="loading-spinner"></div>
+                                    <span>Loading students...</span>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- MOBILE OVERLAY -->
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<!-- ADD / EDIT STUDENT MODAL -->
+<div
+    class="modal-backdrop"
+    id="studentModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="studentModalTitle"
+    >
+
+        <div class="modal-header">
+
+            <div>
+                <div class="modal-eyebrow">STUDENT RECORD</div>
+                <h2 id="studentModalTitle">Add Student</h2>
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeStudentModal"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="studentForm" novalidate>
+
+            <input
+                type="hidden"
+                id="studentRecordId"
+            >
+
+
+            <div class="form-section">
+
+                <div class="form-section-title">
+                    Personal Information
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+                        <label for="studentName">
+                            Full Name <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="studentName"
+                            placeholder="Enter student's full name"
+                            maxlength="100"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="studentMobile">
+                            Mobile Number <span>*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="studentMobile"
+                            placeholder="Enter mobile number"
+                            maxlength="15"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="studentEmail">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="studentEmail"
+                            placeholder="Enter email address"
+                            maxlength="150"
+                        >
+                    </div>
+
+
+                    <div class="form-group full">
+                        <label for="studentAddress">
+                            Address
+                        </label>
+
+                        <textarea
+                            id="studentAddress"
+                            rows="3"
+                            maxlength="300"
+                            placeholder="Enter address"
+                        ></textarea>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <div class="form-section-title">
+                    Admission & Membership
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="admissionDate">
+                            Admission Date <span>*</span>
+                        </label>
+
+                        <input
+                            type="date"
+                            id="admissionDate"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="membershipPlan">
+                            Membership Plan
+                        </label>
+
+                        <select id="membershipPlan">
+                            <option value="">Select plan</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="membershipStart">
+                            Membership Start
+                        </label>
+
+                        <input
+                            type="date"
+                            id="membershipStart"
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="membershipEnd">
+                            Membership End
+                        </label>
+
+                        <input
+                            type="date"
+                            id="membershipEnd"
+                        >
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <div class="form-section-title">
+                    Seat & Fees
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="seatId">
+                            Seat
+                        </label>
+
+                        <select id="seatId">
+                            <option value="">No seat assigned</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="totalFee">
+                            Total Fee
+                        </label>
+
+                        <input
+                            type="number"
+                            id="totalFee"
+                            min="0"
+                            step="1"
+                            placeholder="0"
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="paidFee">
+                            Paid Amount
+                        </label>
+
+                        <input
+                            type="number"
+                            id="paidFee"
+                            min="0"
+                            step="1"
+                            placeholder="0"
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="paymentMode">
+                            Payment Mode
+                        </label>
+
+                        <select id="paymentMode">
+                            <option value="">Select mode</option>
+                            <option value="cash">Cash</option>
+                            <option value="upi">UPI</option>
+                            <option value="card">Card</option>
+                            <option value="bank_transfer">Bank Transfer</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="form-error"
+                id="formError"
+                role="alert"
+            ></div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    id="cancelStudentBtn"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                    id="saveStudentBtn"
+                >
+                    Save Student
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+<div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+>
+    <span id="toastMessage"></span>
+</div>
+
+
+<script src="js/students.js"></script>
+
+<script src="js/notification-badge.js"></script>
+</body>
+</html>

@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Memberships | Mission Raj Library</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/memberships.css"
+    >
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">MR</div>
+
+            <div class="brand-text">
+                <strong>Mission Raj</strong>
+                <span>Library Management</span>
+            </div>
+        </div>
+
+        <div class="sidebar-location">
+            Master Colony, Kekri
+        </div>
+
+        <nav class="navigation">
+
+            <div class="nav-section-title">
+                MAIN
+            </div>
+
+            <a
+                href="owner-dashboard.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a
+                href="students.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">♙</span>
+                <span>Students</span>
+            </a>
+
+            <a
+                href="seats.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">▦</span>
+                <span>Seats</span>
+            </a>
+
+            <a
+                href="memberships.html"
+                class="nav-item active"
+            >
+                <span class="nav-icon">◇</span>
+                <span>Memberships</span>
+            </a>
+
+            <a
+                href="attendance.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">✓</span>
+                <span>Attendance</span>
+            </a>
+
+            <a
+                href="payments.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">₹</span>
+                <span>Fees & Payments</span>
+            </a>
+
+            <div class="nav-section-title">
+                MANAGEMENT
+            </div>
+
+            <a
+                href="notifications.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">◉</span>
+                <span>Notifications</span>
+
+                <span
+                    class="notification-badge"
+                    id="notificationBadge"
+                >
+                    0
+                </span>
+            </a>
+
+            <a
+                href="settings.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+
+            <div class="portal-label">
+                OWNER PORTAL
+            </div>
+
+            <button
+                type="button"
+                class="logout-btn"
+                id="logoutBtn"
+            >
+                <span>↪</span>
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="mobile-menu-btn"
+                    id="mobileMenuBtn"
+                >
+                    ☰
+                </button>
+
+                <div>
+
+                    <div class="page-eyebrow">
+                        OWNER PORTAL
+                    </div>
+
+                    <h1>
+                        Memberships
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    type="button"
+                    class="icon-btn"
+                    id="notificationBtn"
+                >
+                    ◉
+                    <span
+                        class="notification-dot"
+                        id="notificationDot"
+                    ></span>
+                </button>
+
+                <div class="owner-profile">
+
+                    <div
+                        class="owner-avatar"
+                        id="ownerAvatar"
+                    >
+                        O
+                    </div>
+
+                    <div class="owner-info">
+
+                        <strong id="ownerName">
+                            Owner
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="page-content">
+
+            <!-- HEADER -->
+            <div class="page-header">
+
+                <div>
+
+                    <div class="breadcrumb">
+                        Owner / Memberships
+                    </div>
+
+                    <h2>
+                        Membership Management
+                    </h2>
+
+                    <p>
+                        Create and manage membership plans, pricing and validity.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="primary-btn"
+                    id="addPlanBtn"
+                >
+                    <span>+</span>
+                    Create Plan
+                </button>
+
+            </div>
+
+
+            <!-- STATS -->
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon total">
+                        ◇
+                    </div>
+
+                    <div>
+                        <span>Total Plans</span>
+                        <strong id="totalPlans">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon active">
+                        ✓
+                    </div>
+
+                    <div>
+                        <span>Active Plans</span>
+                        <strong id="activePlans">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon inactive">
+                        —
+                    </div>
+
+                    <div>
+                        <span>Inactive Plans</span>
+                        <strong id="inactivePlans">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon members">
+                        ♙
+                    </div>
+
+                    <div>
+                        <span>Active Members</span>
+                        <strong id="activeMembers">0</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- TOOLBAR -->
+            <section class="toolbar-card">
+
+                <div class="search-box">
+
+                    <span class="search-icon">
+                        ⌕
+                    </span>
+
+                    <input
+                        type="search"
+                        id="planSearch"
+                        placeholder="Search plan..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <select id="statusFilter">
+
+                        <option value="all">
+                            All Status
+                        </option>
+
+                        <option value="active">
+                            Active
+                        </option>
+
+                        <option value="inactive">
+                            Inactive
+                        </option>
+
+                    </select>
+
+
+                    <select id="durationFilter">
+
+                        <option value="all">
+                            All Durations
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </section>
+
+
+            <!-- ERROR -->
+            <div
+                class="alert-box"
+                id="apiError"
+                style="display:none;"
+            >
+
+                <strong>
+                    Unable to load memberships
+                </strong>
+
+                <span id="apiErrorMessage">
+                    Please try again.
+                </span>
+
+                <button
+                    type="button"
+                    id="retryBtn"
+                >
+                    Retry
+                </button>
+
+            </div>
+
+
+            <!-- LOADING -->
+            <div
+                class="loading-card"
+                id="loadingState"
+            >
+
+                <div class="loading-spinner"></div>
+
+                <span>
+                    Loading membership plans...
+                </span>
+
+            </div>
+
+
+            <!-- PLAN LIST -->
+            <section
+                class="plans-section"
+                id="plansSection"
+                style="display:none;"
+            >
+
+                <div class="section-header">
+
+                    <div>
+                        <h3>
+                            Membership Plans
+                        </h3>
+
+                        <span id="planResultCount">
+                            0 plans
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="plans-grid"
+                    id="plansGrid"
+                ></div>
+
+
+                <div
+                    class="empty-state"
+                    id="emptyState"
+                    style="display:none;"
+                >
+
+                    <div class="empty-icon">
+                        ◇
+                    </div>
+
+                    <h3>
+                        No membership plans found
+                    </h3>
+
+                    <p>
+                        Create a plan or change the current filters.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- PLAN MODAL -->
+<div
+    class="modal-backdrop"
+    id="planModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <div class="modal-eyebrow">
+                    MEMBERSHIP PLAN
+                </div>
+
+                <h2 id="planModalTitle">
+                    Create Plan
+                </h2>
+
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closePlanModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="planForm">
+
+            <div class="form-body">
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+
+                        <label for="planName">
+                            Plan Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="planName"
+                            placeholder="Example: Monthly Study Plan"
+                            maxlength="100"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="durationValue">
+                            Duration
+                        </label>
+
+                        <input
+                            type="number"
+                            id="durationValue"
+                            min="1"
+                            step="1"
+                            placeholder="1"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="durationUnit">
+                            Duration Unit
+                        </label>
+
+                        <select
+                            id="durationUnit"
+                            required
+                        >
+
+                            <option value="day">
+                                Day
+                            </option>
+
+                            <option value="week">
+                                Week
+                            </option>
+
+                            <option
+                                value="month"
+                                selected
+                            >
+                                Month
+                            </option>
+
+                            <option value="year">
+                                Year
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="planPrice">
+                            Price (₹)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="planPrice"
+                            min="0"
+                            step="0.01"
+                            placeholder="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="planStatus">
+                            Status
+                        </label>
+
+                        <select id="planStatus">
+
+                            <option value="active">
+                                Active
+                            </option>
+
+                            <option value="inactive">
+                                Inactive
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="planDescription">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="planDescription"
+                            rows="3"
+                            maxlength="500"
+                            placeholder="Short description of this membership plan..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label>
+                            Benefits
+                        </label>
+
+                        <div
+                            class="benefits-input-row"
+                            id="benefitsInputRow"
+                        >
+
+                            <input
+                                type="text"
+                                id="benefitInput"
+                                placeholder="Example: Dedicated study seat"
+                                maxlength="120"
+                            >
+
+                            <button
+                                type="button"
+                                class="secondary-btn"
+                                id="addBenefitBtn"
+                            >
+                                Add
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            class="benefits-list"
+                            id="benefitsList"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="form-error"
+                    id="planFormError"
+                ></div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    id="cancelPlanBtn"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                    id="savePlanBtn"
+                >
+                    Save Plan
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- PLAN DETAIL MODAL -->
+<div
+    class="modal-backdrop"
+    id="detailModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <div class="modal-eyebrow">
+                    MEMBERSHIP PLAN
+                </div>
+
+                <h2 id="detailPlanName">
+                    Plan
+                </h2>
+
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeDetailModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="detail-body">
+
+            <div class="detail-price-box">
+
+                <span>
+                    Plan Price
+                </span>
+
+                <strong id="detailPlanPrice">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="detail-grid">
+
+                <div class="detail-row">
+                    <span>Status</span>
+                    <strong id="detailPlanStatus">—</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>Duration</span>
+                    <strong id="detailPlanDuration">—</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>Active Members</span>
+                    <strong id="detailPlanMembers">0</strong>
+                </div>
+
+            </div>
+
+
+            <div
+                class="detail-description"
+                id="detailPlanDescription"
+            ></div>
+
+
+            <div class="detail-benefits">
+
+                <h3>
+                    Benefits
+                </h3>
+
+                <ul id="detailBenefitsList"></ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="secondary-btn"
+                id="closeDetailBtn"
+            >
+                Close
+            </button>
+
+            <button
+                type="button"
+                class="primary-btn"
+                id="editDetailBtn"
+            >
+                Edit Plan
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+<div
+    class="toast"
+    id="toast"
+>
+    <span id="toastMessage"></span>
+</div>
+
+
+<script src="js/memberships.js"></script>
+
+<script src="js/notification-badge.js"></script>
+</body>
+</html>

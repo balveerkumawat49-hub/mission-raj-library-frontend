@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Mission Raj Library</string>
+    <string name="title_activity_main">Mission Raj Library</string>
+    <string name="package_name">com.missionraj.library</string>
+    <string name="custom_url_scheme">com.missionraj.library</string>
+</resources>

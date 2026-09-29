@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Fees & Payments | Mission Raj Library</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/payments.css"
+    >
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                MR
+            </div>
+
+            <div class="brand-text">
+                <strong>Mission Raj</strong>
+                <span>Library Management</span>
+            </div>
+
+        </div>
+
+        <div class="sidebar-location">
+            Master Colony, Kekri
+        </div>
+
+
+        <nav class="navigation">
+
+            <div class="nav-section-title">
+                MAIN
+            </div>
+
+            <a
+                href="owner-dashboard.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a
+                href="students.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">♙</span>
+                <span>Students</span>
+            </a>
+
+            <a
+                href="seats.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">▦</span>
+                <span>Seats</span>
+            </a>
+
+            <a
+                href="memberships.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">◇</span>
+                <span>Memberships</span>
+            </a>
+
+            <a
+                href="attendance.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">✓</span>
+                <span>Attendance</span>
+            </a>
+
+            <a
+                href="payments.html"
+                class="nav-item active"
+            >
+                <span class="nav-icon">₹</span>
+                <span>Fees & Payments</span>
+            </a>
+
+
+            <div class="nav-section-title">
+                MANAGEMENT
+            </div>
+
+            <a
+                href="notifications.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">◉</span>
+                <span>Notifications</span>
+
+                <span
+                    class="notification-badge"
+                    id="notificationBadge"
+                >
+                    0
+                </span>
+            </a>
+
+            <a
+                href="settings.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <div class="portal-label">
+                OWNER PORTAL
+            </div>
+
+            <button
+                type="button"
+                class="logout-btn"
+                id="logoutBtn"
+            >
+                <span>↪</span>
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="mobile-menu-btn"
+                    id="mobileMenuBtn"
+                >
+                    ☰
+                </button>
+
+                <div>
+
+                    <div class="page-eyebrow">
+                        OWNER PORTAL
+                    </div>
+
+                    <h1>
+                        Fees & Payments
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    type="button"
+                    class="icon-btn"
+                    id="notificationBtn"
+                >
+                    ◉
+
+                    <span
+                        class="notification-dot"
+                        id="notificationDot"
+                    ></span>
+
+                </button>
+
+
+                <div class="owner-profile">
+
+                    <div
+                        class="owner-avatar"
+                        id="ownerAvatar"
+                    >
+                        O
+                    </div>
+
+                    <div class="owner-info">
+
+                        <strong id="ownerName">
+                            Owner
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="page-content">
+
+            <!-- HEADER -->
+            <div class="page-header">
+
+                <div>
+
+                    <div class="breadcrumb">
+                        Owner / Fees & Payments
+                    </div>
+
+                    <h2>
+                        Fees & Payment Management
+                    </h2>
+
+                    <p>
+                        Manage student fees, collections and payment history.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="primary-btn"
+                    id="addPaymentBtn"
+                >
+                    <span>+</span>
+                    Record Payment
+                </button>
+
+            </div>
+
+
+            <!-- STATS -->
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon collection">
+                        ₹
+                    </div>
+
+                    <div>
+                        <span>Today's Collection</span>
+                        <strong id="todayCollection">
+                            ₹0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon month">
+                        ₹
+                    </div>
+
+                    <div>
+                        <span>This Month</span>
+                        <strong id="monthCollection">
+                            ₹0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon pending">
+                        !
+                    </div>
+
+                    <div>
+                        <span>Total Pending</span>
+                        <strong id="totalPending">
+                            ₹0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon payments">
+                        #
+                    </div>
+
+                    <div>
+                        <span>Payments Recorded</span>
+                        <strong id="paymentCount">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FILTERS -->
+            <section class="toolbar-card">
+
+                <div class="search-box">
+
+                    <span class="search-icon">
+                        ⌕
+                    </span>
+
+                    <input
+                        type="search"
+                        id="paymentSearch"
+                        placeholder="Search student, ID or receipt..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <select id="paymentStatusFilter">
+
+                        <option value="all">
+                            All Status
+                        </option>
+
+                        <option value="paid">
+                            Paid
+                        </option>
+
+                        <option value="partial">
+                            Partial
+                        </option>
+
+                        <option value="pending">
+                            Pending
+                        </option>
+
+                    </select>
+
+
+                    <select id="paymentModeFilter">
+
+                        <option value="all">
+                            All Modes
+                        </option>
+
+                        <option value="cash">
+                            Cash
+                        </option>
+
+                        <option value="upi">
+                            UPI
+                        </option>
+
+                        <option value="card">
+                            Card
+                        </option>
+
+                        <option value="bank">
+                            Bank Transfer
+                        </option>
+
+                        <option value="other">
+                            Other
+                        </option>
+
+                    </select>
+
+
+                    <input
+                        type="date"
+                        id="paymentDateFilter"
+                    >
+
+                </div>
+
+            </section>
+
+
+            <!-- ERROR -->
+            <div
+                class="alert-box"
+                id="apiError"
+                style="display:none;"
+            >
+
+                <strong>
+                    Unable to load payment data
+                </strong>
+
+                <span id="apiErrorMessage">
+                    Please try again.
+                </span>
+
+                <button
+                    type="button"
+                    id="retryBtn"
+                >
+                    Retry
+                </button>
+
+            </div>
+
+
+            <!-- PAYMENTS TABLE -->
+            <section class="payments-section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h3>
+                            Payment Records
+                        </h3>
+
+                        <span id="recordCount">
+                            0 records
+                        </span>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="secondary-btn"
+                        id="clearFiltersBtn"
+                    >
+                        Clear Filters
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="loading-state"
+                    id="loadingState"
+                >
+
+                    <div class="loading-spinner"></div>
+
+                    <span>
+                        Loading payment records...
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="table-wrapper"
+                    id="tableWrapper"
+                    style="display:none;"
+                >
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Student
+                                </th>
+
+                                <th>
+                                    Receipt
+                                </th>
+
+                                <th>
+                                    Amount
+                                </th>
+
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    Payment Mode
+                                </th>
+
+                                <th>
+                                    For
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody
+                            id="paymentsTableBody"
+                        ></tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div
+                    class="empty-state"
+                    id="emptyState"
+                    style="display:none;"
+                >
+
+                    <div class="empty-icon">
+                        ₹
+                    </div>
+
+                    <h3>
+                        No payment records
+                    </h3>
+
+                    <p>
+                        No payments match the selected filters.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- PAYMENT MODAL -->
+<div
+    class="modal-backdrop"
+    id="paymentModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <div class="modal-eyebrow">
+                    FEES MANAGEMENT
+                </div>
+
+                <h2>
+                    Record Payment
+                </h2>
+
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closePaymentModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form
+            id="paymentForm"
+            novalidate
+        >
+
+            <div class="form-body">
+
+                <div class="form-group full">
+
+                    <label for="studentSelect">
+                        Student
+                        <span>*</span>
+                    </label>
+
+                    <select
+                        id="studentSelect"
+                        required
+                    >
+
+                        <option value="">
+                            Select student
+                        </option>
+
+                    </select>
+
+                    <small>
+                        Select the student receiving the payment.
+                    </small>
+
+                </div>
+
+
+                <div class="student-summary" id="studentSummary">
+
+                    <div
+                        class="summary-avatar"
+                        id="summaryAvatar"
+                    >
+                        S
+                    </div>
+
+                    <div>
+
+                        <strong id="summaryName">
+                            —
+                        </strong>
+
+                        <span id="summaryId">
+                            —
+                        </span>
+
+                    </div>
+
+                    <div class="summary-balance">
+
+                        <span>
+                            Pending
+                        </span>
+
+                        <strong id="summaryPending">
+                            ₹0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="paymentAmount">
+                            Amount
+                            <span>*</span>
+                        </label>
+
+                        <div class="amount-input">
+
+                            <span>₹</span>
+
+                            <input
+                                type="number"
+                                id="paymentAmount"
+                                min="1"
+                                step="0.01"
+                                placeholder="0.00"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="paymentMode">
+                            Payment Mode
+                            <span>*</span>
+                        </label>
+
+                        <select
+                            id="paymentMode"
+                            required
+                        >
+
+                            <option value="">
+                                Select mode
+                            </option>
+
+                            <option value="cash">
+                                Cash
+                            </option>
+
+                            <option value="upi">
+                                UPI
+                            </option>
+
+                            <option value="card">
+                                Card
+                            </option>
+
+                            <option value="bank">
+                                Bank Transfer
+                            </option>
+
+                            <option value="other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="paymentDate">
+                            Payment Date
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="date"
+                            id="paymentDate"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="paymentReference">
+                            Reference / Transaction ID
+                        </label>
+
+                        <input
+                            type="text"
+                            id="paymentReference"
+                            maxlength="100"
+                            placeholder="Optional"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="paymentPurpose">
+                            Payment For
+                        </label>
+
+                        <input
+                            type="text"
+                            id="paymentPurpose"
+                            maxlength="120"
+                            placeholder="e.g. Monthly membership"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="paymentNote">
+                            Note
+                        </label>
+
+                        <textarea
+                            id="paymentNote"
+                            rows="3"
+                            maxlength="500"
+                            placeholder="Optional payment note"
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    id="cancelPaymentBtn"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                    id="savePaymentBtn"
+                >
+                    Save Payment
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- PAYMENT DETAIL MODAL -->
+<div
+    class="modal-backdrop"
+    id="paymentDetailModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal small-modal"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <div class="modal-eyebrow">
+                    PAYMENT RECORD
+                </div>
+
+                <h2 id="detailStudentName">
+                    Payment
+                </h2>
+
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeDetailModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="detail-body">
+
+            <div class="receipt-preview">
+
+                <div class="receipt-icon">
+                    ₹
+                </div>
+
+                <div>
+
+                    <strong id="detailAmount">
+                        ₹0
+                    </strong>
+
+                    <span id="detailStatus">
+                        —
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-grid">
+
+                <div class="detail-item">
+
+                    <span>
+                        Receipt
+                    </span>
+
+                    <strong id="detailReceipt">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>
+                        Date
+                    </span>
+
+                    <strong id="detailDate">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>
+                        Payment Mode
+                    </span>
+
+                    <strong id="detailMode">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>
+                        Student ID
+                    </span>
+
+                    <strong id="detailStudentId">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item full">
+
+                    <span>
+                        Payment For
+                    </span>
+
+                    <strong id="detailPurpose">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item full">
+
+                    <span>
+                        Reference
+                    </span>
+
+                    <strong id="detailReference">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item full">
+
+                    <span>
+                        Note
+                    </span>
+
+                    <strong id="detailNote">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="secondary-btn"
+                id="closeDetailBtn"
+            >
+                Close
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+<div
+    class="toast"
+    id="toast"
+>
+    <span id="toastMessage"></span>
+</div>
+
+
+<script src="js/payments.js"></script>
+
+<script src="js/notification-badge.js"></script>
+</body>
+</html>
