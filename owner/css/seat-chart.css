@@ -1100,3 +1100,121 @@ a {
         width: 100%;
     }
 }
+
+/* MISSION RAJ SIDEBAR STANDARDIZATION V1 */
+@media (min-width: 851px) {
+  .owner-sidebar {
+    width: 248px;
+    flex: 0 0 248px;
+    background: #111827;
+    color: #d1d5db;
+  }
+
+  .brand {
+    height: 72px;
+    padding: 0 20px;
+    gap: 11px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: #fff;
+    color: #111827;
+    font-size: 12px;
+  }
+
+  .brand strong { font-size: 14px; }
+  .brand span {
+    margin-top: 2px;
+    color: #9ca3af;
+    font-size: 10px;
+  }
+
+  .sidebar-nav {
+    padding: 17px 12px;
+    gap: 3px;
+  }
+
+  .sidebar-nav a {
+    min-height: 42px;
+    padding: 0 11px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    border-radius: 8px;
+    color: #d1d5db;
+    font-size: 12px;
+  }
+
+  .sidebar-nav a:hover,
+  .sidebar-nav a.active {
+    color: #fff;
+    background: #1f2937;
+  }
+
+  .sidebar-nav a.active {
+    box-shadow: none;
+  }
+
+  .sidebar-nav a::before {
+    width: 19px;
+    flex: 0 0 19px;
+    text-align: center;
+    font-size: 15px;
+  }
+
+  .sidebar-nav a[href="owner-dashboard.html"]::before { content: "⌂"; }
+  .sidebar-nav a[href="students.html"]::before { content: "♙"; }
+  .sidebar-nav a[href="seats.html"]::before { content: "▦"; }
+  .sidebar-nav a[href="memberships.html"]::before { content: "◇"; }
+  .sidebar-nav a[href="attendance.html"]::before { content: "✓"; }
+  .sidebar-nav a[href="payments.html"]::before { content: "₹"; }
+  .sidebar-nav a[href="notifications.html"]::before { content: "◉"; }
+  .sidebar-nav a[href="settings.html"]::before { content: "⚙"; }
+
+  .sidebar-nav a[href="notifications.html"] {
+    margin-top: 13px;
+  }
+
+  .sidebar-nav a[href="notifications.html"]::after {
+    content: "MANAGEMENT";
+    position: absolute;
+    left: 24px;
+    transform: translateY(-27px);
+    color: #6b7280;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    pointer-events: none;
+  }
+
+  .sidebar-footer {
+    padding: 15px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .location-label {
+    color: #9ca3af;
+    font-size: 11px;
+    margin-bottom: 9px;
+  }
+
+  .logout-btn {
+    height: 38px;
+    padding: 0 11px;
+    border: 0;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    color: #d1d5db;
+    font-size: 12px;
+    text-align: left;
+  }
+
+  .logout-btn:hover {
+    background: rgba(255,255,255,0.09);
+    color: #fff;
+  }
+}

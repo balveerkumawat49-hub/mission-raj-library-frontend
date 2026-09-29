@@ -1131,3 +1131,146 @@ a {
     gap: 8px;
   }
 }
+
+/* MISSION RAJ SIDEBAR STANDARDIZATION V1 */
+@media (min-width: 821px) {
+  .sidebar {
+    width: 248px;
+    background: #111827;
+    color: #d1d5db;
+    border-right: 0;
+  }
+
+  .brand {
+    height: 72px;
+    padding: 0 20px;
+    gap: 11px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .brand-logo {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: #fff;
+    color: #111827;
+    font-size: 12px;
+  }
+
+  .brand-text strong { font-size: 14px; color: #fff; }
+  .brand-text span { font-size: 10px; color: #9ca3af; }
+
+  .sidebar-section-title:first-of-type {
+    padding: 13px 20px 10px;
+    color: #9ca3af;
+    font-size: 0;
+    font-weight: 400;
+    letter-spacing: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .sidebar-section-title:first-of-type::before {
+    content: "Master Colony, Kekri";
+    font-size: 11px;
+    color: #9ca3af;
+  }
+
+  .sidebar-section-title:first-of-type::after {
+    content: "MAIN";
+    display: block;
+    margin-top: 12px;
+    color: #6b7280;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .08em;
+  }
+
+  .sidebar-section-title.second {
+    padding: 10px 10px 7px;
+    color: #6b7280;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .08em;
+  }
+
+  .navigation { padding: 7px 12px 17px; }
+
+  .nav-item {
+    min-height: 42px;
+    margin: 0 0 3px;
+    padding: 0 11px;
+    border-radius: 8px;
+    color: #d1d5db;
+    font-size: 12px;
+    font-weight: 400;
+    gap: 11px;
+  }
+
+  .nav-item:hover {
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+  }
+
+  .nav-item.active {
+    background: #1f2937;
+    color: #fff;
+    font-weight: 400;
+  }
+
+  .nav-icon {
+    width: 19px;
+    font-size: 15px;
+  }
+
+  .nav-badge {
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 9px;
+    background: #dc2626;
+    color: #fff;
+    font-size: 9px;
+  }
+
+  .nav-item[data-page="reports"] {
+    display: none;
+  }
+
+  .sidebar-bottom {
+    padding: 15px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .location-box {
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .location-box::before {
+    content: "Master Colony, Kekri";
+    color: #9ca3af;
+    font-size: 11px;
+  }
+
+  .location-box > * {
+    display: none;
+  }
+
+  .logout-btn {
+    height: 38px;
+    margin-top: 9px;
+    padding: 0 11px;
+    justify-content: flex-start;
+    border: 0;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    color: #d1d5db;
+    font-size: 12px;
+  }
+
+  .logout-btn:hover {
+    background: rgba(255,255,255,0.09);
+    color: #fff;
+  }
+}

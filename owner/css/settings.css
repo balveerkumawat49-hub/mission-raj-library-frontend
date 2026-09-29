@@ -1065,3 +1065,104 @@ button:disabled {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* MISSION RAJ SIDEBAR STANDARDIZATION V1 */
+@media (min-width: 901px) {
+  .owner-sidebar {
+    width: 248px;
+    background: #111827;
+  }
+
+  .sidebar-brand {
+    height: 72px;
+    padding: 0 20px;
+    gap: 11px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    font-size: 12px;
+  }
+
+  .brand-text strong { font-size: 14px; }
+  .brand-text span { font-size: 10px; }
+
+  .sidebar-location {
+    padding: 13px 20px;
+    font-size: 11px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .sidebar-nav {
+    padding: 17px 12px;
+    gap: 0;
+  }
+
+  .sidebar-nav .nav-item {
+    min-height: 42px;
+    margin-bottom: 3px;
+    padding: 0 11px;
+    border-radius: 8px;
+    gap: 11px;
+    color: #d1d5db;
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  .sidebar-nav .nav-item:hover {
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+  }
+
+  .sidebar-nav .nav-item.active {
+    background: #1f2937;
+    color: #fff;
+  }
+
+  .sidebar-nav .nav-icon {
+    width: 19px;
+    font-size: 15px;
+  }
+
+  .sidebar-nav .nav-item[href="#"] {
+    display: none;
+  }
+
+  .sidebar-bottom {
+    padding: 15px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .owner-mini-profile {
+    display: none;
+  }
+
+  .sidebar-bottom::before {
+    content: "OWNER PORTAL";
+    display: block;
+    margin-bottom: 9px;
+    color: #6b7280;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .08em;
+  }
+
+  .logout-button {
+    min-height: 38px;
+    border: 0;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    color: #d1d5db;
+    justify-content: flex-start;
+    padding: 0 11px;
+    font-size: 12px;
+  }
+
+  .logout-button:hover {
+    background: rgba(255,255,255,0.09);
+    color: #fff;
+  }
+}
