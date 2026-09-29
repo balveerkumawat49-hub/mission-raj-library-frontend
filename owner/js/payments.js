@@ -707,6 +707,7 @@ async function loadStudents() {
 
 
         populateStudentSelect();
+        renderStats();
 
 
     } catch (error) {
