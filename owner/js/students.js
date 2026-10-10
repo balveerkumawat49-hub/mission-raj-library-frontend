@@ -302,9 +302,9 @@ function normalizeStudent(student) {
 
     const status =
         normalizeStatus(
-            student.status ||
-            membership.status ||
-            calculateMembershipStatus(endDate)
+            endDate
+                ? calculateMembershipStatus(endDate)
+                : (membership.status || student.status || "pending")
         );
 
     const identityId =
