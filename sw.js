@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_NAME = "mission-raj-library-v3";
+const CACHE_NAME = "mission-raj-library-v4";
 const STATIC_ASSETS = [
   "./",
   "./index.html",
